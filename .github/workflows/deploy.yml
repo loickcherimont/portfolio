@@ -33,6 +33,7 @@ jobs:
         with:
           node-version: 'lts/*'
           cache: 'pnpm'
+          package-manager: 'pnpm'
 
       # 3️⃣ Install PNPM
       - name: Install PNPM
