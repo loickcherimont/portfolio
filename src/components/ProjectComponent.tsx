@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router";
 import StarryBackground from "./StarryBackground";
 import { API_URL } from "@/constants";
+import { removeHttpFromUrl } from "@/lib/utils";
 
 export default function ProjectComponent() {
     const [project, setProject] = useState<Project | null>(null);
@@ -89,7 +90,7 @@ export default function ProjectComponent() {
                 {/* Image */}
                 {/* To fix */}
                 <img
-                    src={`${API_URL}/images/${project?.imageUrl}`}
+                    src={project?.imageUrl}
                     alt={`Preview for project no.${project?.id}`}
                     className="rounded-lg w-full max-w-xs md:max-w-md lg:max-w-lg object-cover mb-4 shadow-lg"
                 />
@@ -120,7 +121,7 @@ export default function ProjectComponent() {
                         rel="noopener noreferrer"
                         className="text-blue-300 hover:text-blue-400 transition-colors underline break-all lg:text-lg"
                     >
-                        {project?.githubUrl}
+                        {removeHttpFromUrl(project!.githubUrl)}
                     </a>
                 </div>
 
