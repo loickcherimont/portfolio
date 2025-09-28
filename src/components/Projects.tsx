@@ -53,7 +53,7 @@ export default function Achievements() {
 
             {projects?.map((project: Project) => {
                 return (
-                    <Card key={project.id} className="w-80 bg-black/50 border-0 hover:-translate-y-2 transition ease-in duration-300 text-xl">
+                    <Card key={project.id} className="w-80 h-80 bg-black/50 border-0 hover:-translate-y-2 transition ease-in duration-300 text-xl">
                         <CardHeader>
                             <CardTitle className="font-semibold tracking-tight text-violet-700">{project.title}</CardTitle>
                         </CardHeader>
