@@ -31,13 +31,13 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v5
         with:
-          node-version: 'lts/*'
-          cache: 'pnpm'
-          package-manager: 'pnpm'
+          node-version: '22'
 
       # 3️⃣ Install PNPM
-      - name: Install PNPM
-        run: npm install -g pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with: 
+          version: 8
 
       # 4️⃣ Install dependencies using PNPM
       - name: Install dependencies
