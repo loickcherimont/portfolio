@@ -1,20 +1,51 @@
-Portfolio Frontend
+# 🌐 Portfolio — Loick CHERIMONT
 
-## Setup for Development
+## 🌱 About 
 
-1. Clone the repository using `gh repo clone loickcherimont/one-front`
-2. Install the dependencies into the project directory using 
+**Personal developer portfolio**, designed to present my **skills**, **projects**, and **professional journey** in a modern and interactive way.
 
+## 🖥️ Stack
+
+- **Back** : Java 17 (Spring Boot)
+- **Front** : React 19, Tailwind CSS (Shadcn)
+
+## 🚀 Installation & running
+
+1. **Clone the repository**
 ```bash
-cd ./one-front
-pnpm i
+   git clone https://github.com/loickcherimont/portfolio.git
+   cd portfolio
 ```
 
-3. Create a `.env` file in the project root directory and add the necessary environment variables.
+2. **Install dependencies**
 
 ```bash
-touch .env
-VITE_BACKEND_API="http://localhost:[BACKEND_PORT]/api"
+   pnpm install
+```
 
-# Replace [BACKEND_PORT] with the port your backend is running on
-# By default, it is 8080
+3. **Run the project**
+
+```bash
+   pnpm dev
+```
+
+4. The app will be available at: [http://localhost:5173](http://localhost:5173)
+
+## 🎯 Usage
+
+- Discover my **projects**
+- Learn about my **technical stack**
+- Contact me directly via integrated links or forms
+- Explore a **responsive** and **animated** UI built with React and Shadcn
+
+You can visit the **live version** here: [Personal portfolio](https://loickcherimont.github.io/portfolio/)
+
+## 🔑 License
+
+This project is a personal portfolio made by Loick CHERIMONT and is **not intended for commercial reuse**.
+
+---
+
+<div align="center">&copy; 2025 x Loick CHERIMONT</div>
+
+
