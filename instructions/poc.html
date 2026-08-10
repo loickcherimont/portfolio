@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Loïck Cherimont — Développeur Java / Spring Boot Junior. API REST, tests, qualité logicielle. Portfolio disponible à Nantes, France." />
+  <title>Loïck Cherimont — Développeur Java / Spring Boot Junior</title>
+
+  <!-- Bootstrap 5.3.8 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap"
+    rel="stylesheet">
+
+
+
+  <style>
+    /* Design tokens */
+    :root {
+      --ink: #233142;
+      --surface: #F3F3F0;
+      --card: #FFFFFF;
+      /* --primary:#0066A1; */
+      --primary: #2772db;
+      --border: #dfded8;
+      --ink-soft: #233142;
+    }
+
+    .google-sans-flex-test {
+      font-family: "Google Sans Flex", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+      font-variation-settings:
+        "slnt" 0,
+        "wdth" 100,
+        "GRAD" 0,
+        "ROND" 0;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 76px;
+    }
+
+    body {
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 4.5rem 0;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(243, 243, 240, .94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar-brand {
+      font-weight: 800;
+      color: var(--ink) !important;
+      letter-spacing: -.3px;
+    }
+
+    .navbar-brand span {
+      color: var(--primary);
+    }
+
+    .nav-link {
+      font-size: .9rem;
+      color: var(--ink) !important;
+      padding: .4rem .75rem !important;
+      border-radius: 6px;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background: #e5e4de;
+    }
+
+    .nav-cta {
+      background: var(--primary) !important;
+      color: #fff !important;
+      border-radius: 6px;
+      font-weight: 600;
+      padding: .4rem 1rem !important;
+    }
+
+    .nav-cta:hover {
+      background: #00578c !important;
+      color: #fff !important;
+    }
+
+    /* Sections : titre + sous-titre */
+    .section-label {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: .4rem;
+    }
+
+    .section-title {
+      font-weight: 800;
+      margin-bottom: .35rem;
+    }
+
+    .section-sub {
+      color: var(--ink-soft);
+      margin-bottom: 2.5rem;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 6.5rem 0 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 50% at 80% 30%, rgba(0, 102, 161, .10) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 15% 75%, rgba(0, 102, 161, .06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-weight: 800;
+      letter-spacing: -1px;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+    }
+
+    .hero h1 .accent {
+      color: var(--primary);
+    }
+
+    .hero-sub {
+      color: var(--ink-soft);
+      max-width: 560px;
+    }
+
+    .btn-primary-custom {
+      background: var(--primary);
+      border: 1px solid var(--primary);
+      color: #fff;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: .65rem 1.4rem;
+    }
+
+    .btn-primary-custom:hover {
+      background: #00578c;
+      color: #fff;
+    }
+
+    .btn-outline-custom {
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      font-weight: 600;
+      border-radius: 8px;
+      padding: .65rem 1.4rem;
+    }
+
+    .btn-outline-custom:hover {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .photo-pro {
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #cfe6f2, #8fbdd9);
+      border: 6px solid #fff;
+      box-shadow: 0 12px 32px rgba(14, 17, 23, .14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .photo-pro i {
+      font-size: 5rem;
+      color: rgba(255, 255, 255, .85);
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .stat-label {
+      font-size: .85rem;
+      color: var(--ink-soft);
+      font-weight: 500;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(14, 17, 23, .10);
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    /* Project */
+    .project-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: .3rem;
+    }
+
+    .project-period {
+      font-size: .78rem;
+      color: var(--ink-soft);
+      font-family: monospace;
+      margin-bottom: .7rem;
+    }
+
+    .project-desc {
+      font-size: .9rem;
+      color: var(--ink-soft);
+      flex: 1;
+    }
+
+    .project-tag {
+      background: #e3eef6;
+      color: var(--primary);
+      border-radius: 5px;
+      padding: .2rem .55rem;
+      font-size: .75rem;
+      font-weight: 600;
+    }
+
+    .screenshot {
+      border-radius: 10px;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, .9);
+      font-weight: 600;
+      font-size: .95rem;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+
+    /* Skills */
+    .skill-group h4 {
+      font-size: .95rem;
+      font-weight: 700;
+      margin-bottom: .75rem;
+    }
+
+    .badge {
+      font-weight: 600;
+    }
+
+    .badge-featured {
+      background: var(--primary);
+      color: #fff;
+      font-size: .8rem;
+      padding: .45rem .8rem;
+      border-radius: 999px;
+    }
+
+    .badge-standard {
+      background: #fff;
+      color: var(--ink);
+      border: 1px solid var(--border);
+      font-size: .8rem;
+      padding: .45rem .8rem;
+      border-radius: 999px;
+    }
+
+    .badge-soft {
+      background: #e7f3ec;
+      color: #1e6b46;
+      font-size: .8rem;
+      padding: .45rem .8rem;
+      border-radius: 999px;
+    }
+
+    /* Experience */
+    .xp-period {
+      background: #e3eef6;
+      color: var(--primary);
+      border-radius: 999px;
+      padding: .25rem .8rem;
+      font-size: .75rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .xp-role {
+      font-weight: 700;
+      font-size: 1.02rem;
+    }
+
+    .xp-company {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: .88rem;
+    }
+
+    .xp-desc {
+      font-size: .88rem;
+      color: var(--ink-soft);
+    }
+
+    .insight-card {
+      border-left: 3px solid var(--primary);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--ink);
+      color: rgba(255, 255, 255, .6);
+      padding: 2.5rem 0;
+      font-size: .85rem;
+    }
+
+    footer a {
+      color: rgba(255, 255, 255, .8);
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    .footer-name {
+      color: #fff;
+      font-weight: 800;
+      display: block;
+      margin-bottom: .3rem;
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80" tabindex="0" class="google-sans-flex-test">
+
+  <!-- Header -->
+  <nav id="mainNav" class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#accueil">Loïck <span>CHERIMONT</span></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav align-items-center gap-1">
+          <li class="nav-item"><a class="nav-link" href="#accueil">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="#realisations">Réalisations</a></li>
+          <li class="nav-item"><a class="nav-link" href="#competences">Compétences</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experiences">Expériences</a></li>
+          <li class="nav-item"><a class="nav-link" href="#a-propos">A propos</a></li>
+          <li class="nav-item ms-lg-2">
+            <a class="nav-link nav-cta" href="#me-contacter"><i class="bi bi-envelope-fill me-1"></i>Me contacter</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="accueil" class="hero">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-8 fade-in">
+          <h1>Développeur<br><span class="accent">Java / Spring Boot</span><br>Junior</h1>
+          <p class="hero-sub mt-3">
+            Orienté <strong>architecture backend</strong> : API REST, Spring Security, Spring Data JPA et
+            tests (JUnit 5 / Mockito). Complément <strong style="color: var(--primary);">Angular</strong> pour produire
+            une application complète
+            lorsque c'est nécessaire. Capable de mener un projet de bout en bout.
+          </p>
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <a class="btn btn-primary-custom" href="#realisations"><i class="bi bi-box-arrow-down me-1"></i>Voir mon
+              projet</a>
+            <a class="btn btn-outline-custom" href="#me-contacter">Me contacter</a>
+          </div>
+        </div>
+        <div class="col-lg-4 text-center fade-in" style="transition-delay:.15s">
+          <div class="photo-pro"><i class="bi bi-person-fill"></i></div>
+          <p class="text-muted small mt-3 mb-0">Photo professionnelle</p>
+        </div>
+      </div>
+
+      <div class="row g-4 text-center mt-4">
+        <div class="col-4 fade-in">
+          <div class="stat-number">2</div>
+          <div class="stat-label">Expériences professionnelles</div>
+        </div>
+        <div class="col-4 fade-in" style="transition-delay:.07s">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Ans d'apprentissage du développement</div>
+        </div>
+        <div class="col-4 fade-in" style="transition-delay:.14s">
+          <div class="stat-number">5+</div>
+          <div class="stat-label">Projets construits</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Réalisations -->
+  <section id="realisations">
+    <div class="container">
+      <p class="section-label">// Réalisations</p>
+      <h2 class="section-title">Ce que j'ai construit</h2>
+      <p class="section-sub">Des projets backend Java pensés comme de vraies applications, testés et documentés.</p>
+
+      <div class="row g-4">
+
+        <!-- Projet 1 -->
+        <div class="col-md-6 fade-in">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="screenshot mb-3" style="background:url('https://placehold.co/600x400')">
+                <i class="bi bi-ticket-perforated-fill me-2"></i>Ticket API
+              </div>
+              <div class="project-title">Gestionnaire de tickets support</div>
+              <div class="project-period">2025 – aujourd'hui</div>
+              <p class="project-desc">
+                API REST en Java / Spring Boot pour la gestion de tickets support,
+                avec authentification, tests unitaires JUnit / AssertJ et Mockito.
+              </p>
+              <div class="d-flex flex-wrap gap-2 my-3">
+                <span class="project-tag">Java</span>
+                <span class="project-tag">Spring Boot</span>
+                <span class="project-tag">Spring Security</span>
+                <span class="project-tag">Spring Data JPA</span>
+                <span class="project-tag">PostgreSQL</span>
+                <span class="project-tag">JUnit / AssertJ</span>
+              </div>
+              <div class="d-flex gap-2 mt-auto">
+                <a class="btn btn-primary-custom btn-sm flex-fill" data-bs-toggle="modal"
+                  data-bs-target="#projectModal1">
+                  <i class="bi bi-eye me-1"></i>Découvrir le projet
+                </a>
+                <a class="btn btn-outline-custom btn-sm" href="https://github.com/loickcherimont/ticketing-api"
+                  target="_blank">
+                  <i class="bi bi-github me-1"></i>Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projet 2 -->
+        <div class="col-md-6 fade-in" style="transition-delay:.08s">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="screenshot mb-3" style="background:linear-gradient(135deg,#0E1117,#0066A1)">
+                <i class="bi bi-chat-dots-fill me-2"></i>Chat API
+              </div>
+              <div class="project-title">Messagerie sécurisée en temps réel</div>
+              <div class="project-period">2026</div>
+              <p class="project-desc">
+                API temps réel basée sur WebSocket / STOMP, sécurisée par authentification
+                JWT (Spring Security), avec tests JUnit / AssertJ et Mockito.
+              </p>
+              <div class="d-flex flex-wrap gap-2 my-3">
+                <span class="project-tag">Java</span>
+                <span class="project-tag">Spring Boot</span>
+                <span class="project-tag">WebSocket / STOMP</span>
+                <span class="project-tag">JWT</span>
+                <span class="project-tag">JUnit / AssertJ</span>
+                <span class="project-tag">Mockito</span>
+              </div>
+              <div class="d-flex gap-2 mt-auto">
+                <a class="btn btn-primary-custom btn-sm flex-fill" data-bs-toggle="modal"
+                  data-bs-target="#projectModal2">
+                  <i class="bi bi-eye me-1"></i>Découvrir le projet
+                </a>
+                <a class="btn btn-outline-custom btn-sm"
+                  href="https://github.com/loickcherimont/springboot-jwt-secure-chat-api" target="_blank">
+                  <i class="bi bi-github me-1"></i>Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projet en cours -->
+        <div class="col-md-6 fade-in" style="transition-delay:.16s">
+          <div class="card h-100" style="border-style:dashed;border-color:var(--primary)">
+            <div class="card-body d-flex flex-column align-items-center justify-content-center text-center">
+              <div style="font-size:2.2rem;margin-bottom:.75rem"><i class="bi bi-rocket-takeoff"
+                  style="color:var(--primary)"></i></div>
+              <div class="project-title" style="color:var(--primary)">Prochain projet</div>
+              <p class="text-muted" style="font-size:.88rem">Apprendre Angular et construire le frontend d'une
+                application complète…</p>
+              <code style="color:var(--primary)">git push origin main</code>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Compétences -->
+  <section id="competences" style="background:var(--card);border-top:1px solid var(--border)">
+    <div class="container">
+      <p class="section-label">// Compétences</p>
+      <h2 class="section-title">Stack technique & savoir-être</h2>
+      <p class="section-sub">Les technologies réellement maîtrisées — pas de termes que je ne peux pas expliquer en
+        entretien.</p>
+
+      <div class="row g-4">
+
+        <div class="col-md-6 col-lg-4 fade-in">
+          <div class="skill-group">
+            <h4><i class="bi bi-cup-hot-fill text-primary me-2"></i>Backend</h4>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="badge badge-featured"><i class="bi bi-cup-hot-fill me-1"></i>Java 25</span>
+              <span class="badge badge-featured"><i class="bi bi-box-seam me-1"></i>Spring Boot</span>
+              <span class="badge badge-standard">Spring Security</span>
+              <span class="badge badge-standard">Spring Data JPA (Hibernate)</span>
+              <span class="badge badge-standard">Spring Web MVC</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 fade-in" style="transition-delay:.05s">
+          <div class="skill-group">
+            <h4><i class="bi bi-database-fill text-primary me-2"></i>Data</h4>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="badge badge-standard"><i class="bi bi-server me-1"></i>SQL (PostgreSQL)</span>
+            </div>
+          </div>
+          <div class="skill-group mt-4">
+            <h4><i class="bi bi-gear-wide-connected text-primary me-2"></i>DevOps</h4>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="badge badge-standard"><i class="bi bi-box-seam me-1"></i>Docker / Docker Compose</span>
+              <span class="badge badge-standard"><i class="bi bi-git me-1"></i>Git / GitHub</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 fade-in" style="transition-delay:.1s">
+          <div class="skill-group">
+            <h4><i class="bi bi-bug-fill text-primary me-2"></i>Testing</h4>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="badge badge-standard">JUnit 5 / AssertJ</span>
+              <span class="badge badge-standard">Mockito</span>
+              <span class="badge badge-standard">Postman</span>
+            </div>
+          </div>
+          <div class="skill-group mt-4">
+            <h4><i class="bi bi-robot text-primary me-2"></i>IA</h4>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="badge badge-standard"><i class="bi bi-stars me-1"></i>OpenCode (agent de code)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 fade-in" style="transition-delay:.15s">
+          <div class="skill-group">
+            <h4><i class="bi bi-window-stack text-primary me-2"></i>Frontend <span
+                class="text-muted fw-normal small">(compétence complémentaire)</span></h4>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="badge badge-standard">TypeScript</span>
+              <span class="badge badge-standard"><i class="bi bi-filetype-angular me-1"></i>Angular</span>
+              <span class="badge badge-standard">Bootstrap 5</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 fade-in" style="transition-delay:.2s">
+          <div class="skill-group">
+            <h4><i class="bi bi-person-check text-success me-2"></i>Soft skills</h4>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="badge badge-soft"><i class="bi bi-lightbulb me-1"></i>Curiosité</span>
+              <span class="badge badge-soft"><i class="bi bi-graph-up me-1"></i>Esprit analytique</span>
+              <span class="badge badge-soft"><i class="bi bi-arrow-repeat me-1"></i>Persévérance</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Expériences -->
+  <section id="experiences">
+    <div class="container">
+      <p class="section-label">// Expériences</p>
+      <h2 class="section-title">Parcours professionnel</h2>
+      <p class="section-sub">Un parcours atypique : du test logiciel au développement backend.</p>
+
+      <div class="row g-4">
+
+        <div class="col-md-6 fade-in">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+                <div class="xp-role">Développeur Back-End Go(lang)</div>
+                <span class="xp-period">01/2022 – 03/2022</span>
+              </div>
+              <div class="xp-company mt-1">ENERGY-Lab · Saint-Denis de La Réunion</div>
+              <p class="xp-desc mt-3 mb-0">
+                Conception d'une <strong>API REST</strong> en Go (Gin) avec base <strong>InfluxDB</strong>.
+                Versioning <strong>Git / GitHub</strong>, documentation <strong>Swagger UI (OpenAPI)</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 fade-in" style="transition-delay:.08s">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+                <div class="xp-role">Testeur logiciel — Systèmes embarqués & réseau</div>
+                <span class="xp-period">11/2022 – 10/2023</span>
+              </div>
+              <div class="xp-company mt-1">Accenture · Nantes / Saint-Herblain</div>
+              <p class="xp-desc mt-3 mb-0">
+                Validation de <strong>tests fonctionnels E2E</strong> sur modems, analyse de performances
+                via logs <strong>Wireshark</strong> et scripts <strong>Bash</strong>,
+                qualification d'anomalies avec les équipes développement.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 fade-in" style="transition-delay:.16s">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+                <div class="xp-role">Développeur Web WordPress <span
+                    class="text-muted fw-normal small">(Bénévolat)</span></div>
+                <span class="xp-period">10/2025 – aujourd'hui</span>
+              </div>
+              <div class="xp-company mt-1">CSC Alain Kabulo · Remote</div>
+              <p class="xp-desc mt-3 mb-0">
+                Refonte du site associatif avec <strong>WordPress</strong>,
+                optimisation <strong>SEO</strong> et performances, documentation technique.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 fade-in" style="transition-delay:.24s">
+          <div class="card insight-card h-100">
+            <div class="card-body">
+              <div class="xp-role mb-3" style="font-size:.95rem">Ce que ces expériences m'ont apporté</div>
+              <ul class="ps-3 mb-0" style="font-size:.88rem;color:var(--ink-soft)">
+                <li class="mb-2">Rigueur et méthode acquises en contexte de test logiciel industriel</li>
+                <li class="mb-2">Première exposition à un cycle complet API REST (Go → Java)</li>
+                <li class="mb-2">Capacité à travailler en équipe et à documenter son travail</li>
+                <li>Goût pour la qualité et la fiabilité du code</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- A propos -->
+  <section id="a-propos" style="background:var(--card);border-top:1px solid var(--border)">
+    <div class="container">
+      <p class="section-label">// A propos</p>
+      <h2 class="section-title">Un parcours atypique, une vraie valeur ajoutée</h2>
+      <p class="section-sub">Des mathématiques au développement backend, en passant par le test logiciel.</p>
+
+      <div class="row g-4">
+        <div class="col-lg-7 fade-in">
+          <p style="font-size:.95rem;color:var(--ink-soft)">
+            Ma <strong>genèse du code</strong> : passionné d'informatique depuis longtemps, j'ai d'abord suivi un
+            cursus en <strong>mathématiques</strong> (Licence, Université de La Réunion) qui a forgé mon esprit
+            analytique. L'informatique est ensuite devenue une évidence, que j'ai appris en <strong>autodidacte</strong>
+            avant de me former au développement Java / Spring Boot.
+          </p>
+          <p style="font-size:.95rem;color:var(--ink-soft)">
+            De <strong>La Réunion</strong> à <strong>Lyon</strong>, puis <strong>Nantes (2022 – aujourd'hui)</strong> :
+            un parcours de mobilité qui reflète mon ouverture d'esprit et mon adaptabilité.
+          </p>
+          <p style="font-size:.95rem;color:var(--ink-soft)">
+            Mon <strong>objectif long terme</strong> : devenir ingénieur logiciel backend Java senior, capable de
+            concevoir des architectures robustes. Pour y parvenir, je suis prêt à apprendre en continu, à sortir de
+            ma zone de confort et à débuter sur un poste junior — ou une passerelle — pour rejoindre des équipes
+            expérimentées.
+          </p>
+        </div>
+        <div class="col-lg-5 fade-in" style="transition-delay:.1s">
+          <div class="card h-100" style="background:#f7f7f4">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-3 mb-4">
+                <i class="bi bi-map-pin-fill text-primary" style="font-size:1.6rem"></i>
+                <div>
+                  <div style="font-weight:700">Le parcours en bref</div>
+                  <div class="text-muted" style="font-size:.85rem">Réunion → Lyon → Nantes</div>
+                </div>
+              </div>
+              <ul class="list-unstyled mb-0" style="font-size:.88rem">
+                <li class="mb-3"><i class="bi bi-mortarboard-fill text-primary me-2"></i><strong>Mathématiques</strong>
+                  (L3) — Université de La Réunion</li>
+                <li class="mb-3"><i class="bi bi-journal-code text-primary me-2"></i><strong>Complément développement
+                    web</strong> — 6 mois</li>
+                <li class="mb-3"><i class="bi bi-wrench-adjustable text-primary me-2"></i><strong>Test logiciel</strong>
+                  — Accenture, Nantes</li>
+                <li class="mb-3"><i class="bi bi-cup-hot-fill text-primary me-2"></i><strong>Développement backend
+                    Java</strong> — autodidacte puis projets</li>
+                <li><i class="bi bi-lightning-charge-fill text-primary me-2"></i><strong>Aujourd'hui</strong> :
+                  recherche d'un premier poste Java / Spring Boot</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Me contacter -->
+  <section id="me-contacter">
+    <div class="container">
+      <div class="text-center fade-in">
+        <p class="section-label">// Recruteurs, tech leads</p>
+        <h2 class="section-title">Me contacter</h2>
+        <p class="section-sub" style="max-width:480px;margin-left:auto;margin-right:auto">
+          Prêt à discuter d'une offre de développeur Java / Spring Boot junior ou d'une passerelle vers le
+          développement.
+        </p>
+
+        <a href="#" class="btn btn-primary-custom mb-4"><i class="bi bi-file-earmark-arrow-down me-2"></i>Télécharger
+          mon CV</a>
+
+        <div class="row g-3 justify-content-center" style="max-width:860px;margin-left:auto;margin-right:auto">
+          <div class="col-md-4 fade-in">
+            <a href="mailto:mon.adresse.mail@gmail.com" class="card h-100 text-decoration-none" style="display:block">
+              <div class="card-body text-center py-4">
+                <i class="bi bi-envelope-fill text-primary" style="font-size:1.8rem"></i>
+                <div class="fw-bold mt-2" style="color:var(--ink)">Email</div>
+                <div class="text-muted small">mon.adresse.mail@gmail.com</div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4 fade-in" style="transition-delay:.07s">
+            <a href="https://linkedin.com/in/loickcherimont" target="_blank" class="card h-100 text-decoration-none"
+              style="display:block">
+              <div class="card-body text-center py-4">
+                <i class="bi bi-linkedin text-primary" style="font-size:1.8rem"></i>
+                <div class="fw-bold mt-2" style="color:var(--ink)">LinkedIn</div>
+                <div class="text-muted small">/in/loickcherimont</div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4 fade-in" style="transition-delay:.14s">
+            <a href="tel:0123456789" class="card h-100 text-decoration-none" style="display:block">
+              <div class="card-body text-center py-4">
+                <i class="bi bi-telephone-fill text-primary" style="font-size:1.8rem"></i>
+                <div class="fw-bold mt-2" style="color:var(--ink)">Téléphone</div>
+                <div class="text-muted small">01 23 45 67 89</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- <p class="mt-4 text-muted small fade-in"><i class="bi bi-geo-alt-fill me-1"></i></p> -->
+        <div class="d-inline-flex align-items-center gap-2 mb-3"
+          style="background:#e3eef6;color:var(--primary);border-radius:999px;padding:.25rem .85rem;font-size:.78rem;font-weight:600">
+          <span class="d-inline-block rounded-circle bg-primary" style="width:7px;height:7px"></span>
+          Disponible — 44000 Nantes, France — ouvert au remote
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center">
+      <span class="footer-name">Loïck Cherimont</span>
+      <div>Développeur Java / Spring Boot Junior · Nantes, France</div>
+      <div class="mt-2">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#mentionsModal">Mentions légales</a>
+        <span class="d-inline-block mx-2" style="color:rgba(255,255,255,.2)">•</span>
+        <span>© 2026 Loïck Cherimont</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mentions légales -->
+  <div class="modal fade" id="mentionsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold">Mentions légales</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <div class="fw-bold">Éditeur</div>
+            <div>Loïck Cherimont — Développeur Java / Spring Boot Junior, 44000 Nantes, France</div>
+          </div>
+          <div class="mb-3">
+            <div class="fw-bold">Hébergement</div>
+            <div>GitHub Pages</div>
+          </div>
+          <div>
+            <div class="fw-bold">Crédits</div>
+            <div>Icônes : Bootstrap Icons</div>
+            <div>Images : [source / licence si nécessaire]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Détail projet 1 -->
+  <div class="modal fade" id="projectModal1" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold">Gestionnaire de tickets support</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body">
+          <div id="carousel1" class="carousel slide mb-4" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="screenshot" style="background:linear-gradient(135deg,#0066A1,#0E1117)"><i
+                    class="bi bi-ticket-perforated-fill me-2"></i>Capture principale — Dashboard tickets</div>
+              </div>
+              <div class="carousel-item">
+                <div class="screenshot" style="background:linear-gradient(135deg,#0E1117,#0066A1)"><i
+                    class="bi bi-shield-lock-fill me-2"></i>Capture — Authentification</div>
+              </div>
+              <div class="carousel-item">
+                <div class="screenshot" style="background:linear-gradient(135deg,#2b5876,#4e4376)"><i
+                    class="bi bi-journal-code me-2"></i>Capture — Code source</div>
+              </div>
+              <div class="carousel-item">
+                <div class="screenshot" style="background:linear-gradient(135deg,#4e4376,#2b5876)"><i
+                    class="bi bi-check2-square me-2"></i>Capture — Tests unitaires</div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel1" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-6">
+              <h6 class="fw-bold">Contexte & Objectifs</h6>
+              <p class="text-muted small">
+                Construire une API REST complète de gestion de tickets support, avec authentification,
+                pour démontrer la maîtrise de la stack Java / Spring Boot de bout en bout.
+              </p>
+              <h6 class="fw-bold mt-3">Choix techniques & compétences mobilisées</h6>
+              <div class="d-flex flex-wrap gap-2">
+                <span class="project-tag">Java</span>
+                <span class="project-tag">Spring Boot</span>
+                <span class="project-tag">Spring Security</span>
+                <span class="project-tag">Spring Data JPA</span>
+                <span class="project-tag">PostgreSQL</span>
+                <span class="project-tag">Swagger UI</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h6 class="fw-bold">Difficultés & Solutions</h6>
+              <p class="text-muted small mb-0">
+                Sécurisation des endpoints (JWT) et gestion des relations JPA — résolu par une
+                architecture en couches et des tests unitaires JUnit / AssertJ et Mockito pour
+                garantir la fiabilité des comportements critiques.
+              </p>
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <a class="btn btn-primary-custom" href="https://github.com/loickcherimont/ticketing-api" target="_blank">
+              <i class="bi bi-github me-1"></i>Voir le code source
+            </a>
+            <a class="btn btn-outline-custom" href="#"><i class="bi bi-box-arrow-up-right me-1"></i>Live Demo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Détail projet 2 -->
+  <div class="modal fade" id="projectModal2" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold">Messagerie sécurisée en temps réel</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body">
+          <div id="carousel2" class="carousel slide mb-4" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="screenshot" style="background:linear-gradient(135deg,#0E1117,#0066A1)"><i
+                    class="bi bi-chat-dots-fill me-2"></i>Capture principale — Interface de chat</div>
+              </div>
+              <div class="carousel-item">
+                <div class="screenshot" style="background:linear-gradient(135deg,#0066A1,#0E1117)"><i
+                    class="bi bi-key-fill me-2"></i>Capture — Login JWT</div>
+              </div>
+              <div class="carousel-item">
+                <div class="screenshot" style="background:linear-gradient(135deg,#2b5876,#4e4376)"><i
+                    class="bi bi-plugin me-2"></i>Capture — WebSocket / STOMP</div>
+              </div>
+              <div class="carousel-item">
+                <div class="screenshot" style="background:linear-gradient(135deg,#4e4376,#2b5876)"><i
+                    class="bi bi-shield-check me-2"></i>Capture — Tests de sécurité</div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-6">
+              <h6 class="fw-bold">Contexte & Objectifs</h6>
+              <p class="text-muted small">
+                Développer une messagerie temps réel sécurisée pour explorer WebSocket / STOMP
+                et la sécurisation d'une API Spring avec authentification JWT.
+              </p>
+              <h6 class="fw-bold mt-3">Choix techniques & compétences mobilisées</h6>
+              <div class="d-flex flex-wrap gap-2">
+                <span class="project-tag">Java</span>
+                <span class="project-tag">Spring Boot</span>
+                <span class="project-tag">WebSocket / STOMP</span>
+                <span class="project-tag">JWT</span>
+                <span class="project-tag">Spring Security</span>
+                <span class="project-tag">JUnit / AssertJ</span>
+                <span class="project-tag">Mockito</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h6 class="fw-bold">Difficultés & Solutions</h6>
+              <p class="text-muted small mb-0">
+                Gérer l'authentification JWT en amont des connexions WebSocket — résolu par un
+                handshake sécurisé et une couverture de tests ciblant les flux de sécurité.
+              </p>
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <a class="btn btn-primary-custom" href="https://github.com/loickcherimont/springboot-jwt-secure-chat-api"
+              target="_blank">
+              <i class="bi bi-github me-1"></i>Voir le code source
+            </a>
+            <a class="btn btn-outline-custom" href="#"><i class="bi bi-box-arrow-up-right me-1"></i>Live Demo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+
+</html>
