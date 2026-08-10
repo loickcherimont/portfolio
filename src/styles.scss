@@ -1,13 +1,381 @@
 /* You can add global styles to this file, and also import other style files */
-@use "bootstrap/scss/bootstrap" with (
-	$primary: #2772DB,
+@use "bootstrap/scss/bootstrap" with ($primary: #2772DB,
 	$secondary: #233142,
 	$light: #F3F3F0,
 	$body-color: #233142,
-	$font-family-sans-serif: ("Google Sans Flex", sans-serif)
-);
+	$font-family-sans-serif: ("Google Sans Flex", sans-serif));
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
 
 @font-face {
 	font-family: "Google Sans Flex";
 	src: url("./app/assets/fonts/Google_Sans_Flex/GoogleSansFlex-VariableFont_GRAD\,ROND\,opsz\,slnt\,wdth\,wght.ttf");
+}
+
+/* Custom */
+/* Design tokens */
+// :root {
+// 	--ink: #233142;
+// 	--surface: #F3F3F0;
+// 	--card: #FFFFFF;
+// 	/* --primary:#0066A1; */
+// 	--primary: #2772db;
+// 	--border: #dfded8;
+// 	--ink-soft: #233142;
+// }
+
+// .google-sans-flex-test {
+// 	font-family: "Google Sans Flex", sans-serif;
+// 	font-optical-sizing: auto;
+// 	font-weight: 400;
+// 	font-style: normal;
+// 	font-variation-settings:
+// 		"slnt" 0,
+// 		"wdth" 100,
+// 		"GRAD" 0,
+// 		"ROND" 0;
+// }
+
+
+
+// html {
+// 	scroll-behavior: smooth;
+// 	scroll-padding-top: 76px;
+// }
+
+// body {
+// 	background: white;
+// 	color: var(--ink);
+// 	font-size: 1rem;
+// 	line-height: 1.65;
+// 	-webkit-font-smoothing: antialiased;
+// }
+
+// a {
+// 	color: var(--primary);
+// 	text-decoration: none;
+// }
+
+// a:hover {
+// 	text-decoration: underline;
+// }
+
+section {
+	padding: 4.5rem 0;
+}
+
+/* Navbar */
+.navbar {
+	background: rgba(243, 243, 240, .94);
+	backdrop-filter: blur(12px);
+	border-bottom: 1px solid var(--border);
+}
+
+// .navbar-brand {
+// 	font-weight: 800;
+// 	color: var(--ink) !important;
+// 	letter-spacing: -.3px;
+// }
+
+// .navbar-brand span {
+// 	color: var(--primary);
+// }
+
+.nav-link {
+	font-size: .9rem;
+	color: var(--ink) !important;
+	padding: .5rem 1rem !important;
+	border-radius: 6px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+	background: #e5e4de;
+}
+
+// .nav-cta {
+// 	background: var(--primary) !important;
+// 	color: #fff !important;
+// 	border-radius: 6px;
+// 	font-weight: 600;
+// 	padding: .4rem 1rem !important;
+// }
+
+// .nav-cta:hover {
+// 	background: #00578c !important;
+// 	color: #fff !important;
+// }
+
+/* Sections : titre + sous-titre */
+.section-label {
+	font-size: .75rem;
+	font-weight: 700;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+	color: var(--primary);
+	margin-bottom: .4rem;
+}
+
+.section-title {
+	font-weight: 800;
+	margin-bottom: .35rem;
+}
+
+.section-sub {
+	color: var(--ink-soft);
+	margin-bottom: 2.5rem;
+}
+
+/* Hero */
+.hero {
+	padding: 6.5rem 0 5rem;
+	position: relative;
+	overflow: hidden;
+}
+
+.hero::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background:
+		radial-gradient(ellipse 55% 50% at 80% 30%, rgba(0, 102, 161, .10) 0%, transparent 70%),
+		radial-gradient(ellipse 40% 40% at 15% 75%, rgba(0, 102, 161, .06) 0%, transparent 65%);
+	pointer-events: none;
+}
+
+.hero h1 {
+	font-weight: 800;
+	letter-spacing: -1px;
+	font-size: clamp(2rem, 4.5vw, 3rem);
+}
+
+.hero h1 .accent {
+	color: var(--primary);
+}
+
+.hero-sub {
+	color: var(--ink-soft);
+	max-width: 560px;
+}
+
+.btn-primary-custom {
+	background: var(--primary);
+	border: 1px solid var(--primary);
+	color: #fff;
+	font-weight: 600;
+	border-radius: 8px;
+	padding: .65rem 1.4rem;
+}
+
+.btn-primary-custom:hover {
+	background: #00578c;
+	color: #fff;
+}
+
+.btn-outline-custom {
+	border: 1px solid var(--ink);
+	color: var(--ink);
+	font-weight: 600;
+	border-radius: 8px;
+	padding: .65rem 1.4rem;
+}
+
+.btn-outline-custom:hover {
+	background: var(--ink);
+	color: #fff;
+}
+
+.photo-pro {
+	width: 240px;
+	height: 240px;
+	border-radius: 50%;
+	background: linear-gradient(135deg, #cfe6f2, #8fbdd9);
+	border: 6px solid #fff;
+	box-shadow: 0 12px 32px rgba(14, 17, 23, .14);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
+}
+
+.photo-pro i {
+	font-size: 5rem;
+	color: rgba(255, 255, 255, .85);
+}
+
+.stat-number {
+	font-size: 2.2rem;
+	font-weight: 800;
+	color: var(--primary);
+}
+
+.stat-label {
+	font-size: .85rem;
+	color: var(--ink-soft);
+	font-weight: 500;
+}
+
+/* Cards */
+.card {
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 10px 28px rgba(14, 17, 23, .10);
+}
+
+.card-body {
+	padding: 1.5rem;
+}
+
+/* Project */
+.project-title {
+	font-weight: 700;
+	font-size: 1.05rem;
+	margin-bottom: .3rem;
+}
+
+.project-period {
+	font-size: .78rem;
+	color: var(--ink-soft);
+	font-family: monospace;
+	margin-bottom: .7rem;
+}
+
+.project-desc {
+	font-size: .9rem;
+	color: var(--ink-soft);
+	flex: 1;
+}
+
+.project-tag {
+	background: #e3eef6;
+	color: var(--primary);
+	border-radius: 5px;
+	padding: .2rem .55rem;
+	font-size: .75rem;
+	font-weight: 600;
+}
+
+.screenshot {
+	border-radius: 10px;
+	aspect-ratio: 16/9;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgba(255, 255, 255, .9);
+	font-weight: 600;
+	font-size: .95rem;
+	letter-spacing: .03em;
+	text-transform: uppercase;
+}
+
+/* Skills */
+.skill-group h4 {
+	font-size: .95rem;
+	font-weight: 700;
+	margin-bottom: .75rem;
+}
+
+.badge {
+	font-weight: 600;
+}
+
+.badge-featured {
+	background: var(--primary);
+	color: #fff;
+	font-size: .8rem;
+	padding: .45rem .8rem;
+	border-radius: 999px;
+}
+
+.badge-standard {
+	background: #fff;
+	color: var(--ink);
+	border: 1px solid var(--border);
+	font-size: .8rem;
+	padding: .45rem .8rem;
+	border-radius: 999px;
+}
+
+.badge-soft {
+	background: #e7f3ec;
+	color: #1e6b46;
+	font-size: .8rem;
+	padding: .45rem .8rem;
+	border-radius: 999px;
+}
+
+/* Experience */
+.xp-period {
+	background: #e3eef6;
+	color: var(--primary);
+	border-radius: 999px;
+	padding: .25rem .8rem;
+	font-size: .75rem;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.xp-role {
+	font-weight: 700;
+	font-size: 1.02rem;
+}
+
+.xp-company {
+	color: var(--primary);
+	font-weight: 600;
+	font-size: .88rem;
+}
+
+.xp-desc {
+	font-size: .88rem;
+	color: var(--ink-soft);
+}
+
+.insight-card {
+	border-left: 3px solid var(--primary);
+}
+
+/* Footer */
+footer {
+	background: var(--ink);
+	color: rgba(255, 255, 255, .6);
+	padding: 2.5rem 0;
+	font-size: .85rem;
+}
+
+footer a {
+	color: rgba(255, 255, 255, .8);
+}
+
+footer a:hover {
+	color: #fff;
+}
+
+.footer-name {
+	color: #fff;
+	font-weight: 800;
+	display: block;
+	margin-bottom: .3rem;
+}
+
+/* Animations */
+.fade-in {
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity .5s ease, transform .5s ease;
+}
+
+.fade-in.visible {
+	opacity: 1;
+	transform: none;
 }

@@ -25,4 +25,5 @@ No CI workflows exist.
 
 - Runner is **Vitest 4** via the `@angular/build:unit-test` builder (angular.json) — no Karma/Jasmine. `vitest/globals` types come from `tsconfig.spec.json`. Specs live next to components as `*.spec.ts`.
 - Do **not** pass `--browsers=...` to `ng test` — the Vitest builder does not support it (it runs headless with jsdom).
-- **Currently red:** `src/app/app.spec.ts` "should render title" expects `Hello, pv3`, but `src/app/app.html` was replaced with a `Hello World` placeholder. Relatedly, the build warns `NG8113: All imports are unused` because `RouterOutlet` is imported in `app.ts` while `app.html` no longer contains `<router-outlet/>`. Keep templates, component imports, and specs in sync as you rebuild the UI.
+- The legacy `app.spec.ts` "should render title" test is **commented out**: it asserted on the scaffold `Hello, pv3` title, which no longer exists. Re-enable/extend it when the app has real content.
+- Write tests in english
