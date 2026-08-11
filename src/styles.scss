@@ -42,10 +42,14 @@
 
 
 
-// html {
-// 	scroll-behavior: smooth;
-// 	scroll-padding-top: 76px;
-// }
+// Smooth scrolling to anchor links (#realisations, #competences…) + top offset.
+// scroll-padding-top = the navbar is fixed-top (~76px): without this offset the
+// section headings would land hidden underneath it. We reserve 76px at the top
+// of the scroll area so anchors stop just below the nav.
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 76px;
+}
 
 // body {
 // 	background: white;
@@ -130,111 +134,22 @@ section {
 	margin-bottom: 2.5rem;
 }
 
-/* Hero */
-.hero {
-	padding: 6.5rem 0 5rem;
-	position: relative;
-	overflow: hidden;
-}
-
-.hero::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background:
-		radial-gradient(ellipse 55% 50% at 80% 30%, rgba(0, 102, 161, .10) 0%, transparent 70%),
-		radial-gradient(ellipse 40% 40% at 15% 75%, rgba(0, 102, 161, .06) 0%, transparent 65%);
-	pointer-events: none;
-}
-
-.hero h1 {
-	font-weight: 800;
-	letter-spacing: -1px;
-	font-size: clamp(2rem, 4.5vw, 3rem);
-}
-
-.hero h1 .accent {
-	color: var(--primary);
-}
-
-.hero-sub {
-	color: var(--ink-soft);
-	max-width: 560px;
-}
-
-.btn-primary-custom {
-	background: var(--primary);
-	border: 1px solid var(--primary);
-	color: #fff;
-	font-weight: 600;
-	border-radius: 8px;
-	padding: .65rem 1.4rem;
-}
-
-.btn-primary-custom:hover {
-	background: #00578c;
-	color: #fff;
-}
-
-.btn-outline-custom {
-	border: 1px solid var(--ink);
-	color: var(--ink);
-	font-weight: 600;
-	border-radius: 8px;
-	padding: .65rem 1.4rem;
-}
-
-.btn-outline-custom:hover {
-	background: var(--ink);
-	color: #fff;
-}
-
-.photo-pro {
-	width: 240px;
-	height: 240px;
-	border-radius: 50%;
-	background: linear-gradient(135deg, #cfe6f2, #8fbdd9);
-	border: 6px solid #fff;
-	box-shadow: 0 12px 32px rgba(14, 17, 23, .14);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin: 0 auto;
-}
-
-.photo-pro i {
-	font-size: 5rem;
-	color: rgba(255, 255, 255, .85);
-}
-
-.stat-number {
-	font-size: 2.2rem;
-	font-weight: 800;
-	color: var(--primary);
-}
-
-.stat-label {
-	font-size: .85rem;
-	color: var(--ink-soft);
-	font-weight: 500;
-}
-
 /* Cards */
-.card {
-	background: var(--card);
-	border: 1px solid var(--border);
-	border-radius: 12px;
-	transition: transform .25s ease, box-shadow .25s ease;
-}
+// .card {
+// 	background: var(--card);
+// 	border: 1px solid var(--border);
+// 	border-radius: 12px;
+// 	transition: transform .25s ease, box-shadow .25s ease;
+// }
 
-.card:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 10px 28px rgba(14, 17, 23, .10);
-}
+// .card:hover {
+// 	transform: translateY(-3px);
+// 	box-shadow: 0 10px 28px rgba(14, 17, 23, .10);
+// }
 
-.card-body {
-	padding: 1.5rem;
-}
+// .card-body {
+// 	padding: 1.5rem;
+// }
 
 /* Project */
 .project-title {
@@ -345,14 +260,14 @@ section {
 	border-left: 3px solid var(--primary);
 }
 
-/* Animations */
-.fade-in {
-	opacity: 0;
-	transform: translateY(20px);
-	transition: opacity .5s ease, transform .5s ease;
-}
+/* Animations - To reactivate later with Angular and TypeScript */
+// .fade-in {
+// 	opacity: 0;
+// 	transform: translateY(20px);
+// 	transition: opacity .5s ease, transform .5s ease;
+// }
 
-.fade-in.visible {
-	opacity: 1;
-	transform: none;
-}
+// .fade-in.visible {
+// 	opacity: 1;
+// 	transform: none;
+// }

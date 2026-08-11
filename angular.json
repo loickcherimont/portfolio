@@ -27,6 +27,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "*.jpg",
+                "input": "src/app/hero",
+                "output": "/hero/"
               }
             ],
             "styles": [

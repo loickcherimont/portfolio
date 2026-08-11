@@ -1,0 +1,44 @@
+/* Hero */
+.hero {
+	// Full-screen height: the hero fills all the visible vertical space.
+	// `vh` is a fallback for older browsers; `svh` (small viewport height) targets
+	// modern ones: on mobile `svh` = the visible height without the address bar,
+	// so the hero never overflows underneath it.
+	min-height: 100vh;
+	min-height: 100svh;
+
+	// Flexbox vertically centers the hero content in the viewport.
+	display: flex;
+	align-items: center;
+
+	position: relative;
+	overflow: hidden;
+
+	// padding-top ≥ navbar height (fixed-top, ~76px): without it, the content
+	// (heading, buttons, stats) would be hidden under the floating header.
+	// padding-bottom keeps breathing room at the bottom when content is taller
+	// than the viewport.
+	padding: 5.5rem 0 4rem;
+
+	&__paragraph {
+		max-width: 600px;
+		// Left-aligned instead of justified: justified text creates irregular
+		// spacing that harms readability (accessibility).
+		text-align: start;
+	}
+}
+
+.portrait {
+	border: 6px solid #fff;
+	box-shadow: 0 12px 32px rgba(14, 17, 23, .14);
+	position: relative;
+	width: 300px;
+	height: 300px;
+	margin: 0 auto;
+	border-radius: 50%;
+	overflow: hidden;
+
+	&__img {
+		object-fit: cover;
+	}
+}
