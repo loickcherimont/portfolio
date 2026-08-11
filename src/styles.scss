@@ -345,29 +345,6 @@ section {
 	border-left: 3px solid var(--primary);
 }
 
-/* Footer */
-footer {
-	background: var(--ink);
-	color: rgba(255, 255, 255, .6);
-	padding: 2.5rem 0;
-	font-size: .85rem;
-}
-
-footer a {
-	color: rgba(255, 255, 255, .8);
-}
-
-footer a:hover {
-	color: #fff;
-}
-
-.footer-name {
-	color: #fff;
-	font-weight: 800;
-	display: block;
-	margin-bottom: .3rem;
-}
-
 /* Animations */
 .fade-in {
 	opacity: 0;
