@@ -250,7 +250,6 @@ Pour chaque projet :
 
 * image de prévisualisation ;
 * titre ;
-* court descriptif ;
 * bouton **« Découvrir le projet »** ouvrant une fiche détaillée.
 
 #### Fiche projet
