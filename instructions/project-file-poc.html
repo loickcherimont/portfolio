@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Fiche projet — Gestionnaire de tickets support. API REST Java / Spring Boot avec authentification JWT, Spring Data JPA et tests JUnit." />
+  <title>Gestionnaire de tickets support — Loïck Cherimont</title>
+
+  <!-- Bootstrap 5.3.8 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* Design tokens */
+    :root {
+      --ink: #233142;
+      --surface: #F3F3F0;
+      --card: #FFFFFF;
+      --primary: #2772db;
+      --border: #dfded8;
+      --ink-soft: #233142;
+    }
+
+    .google-sans-flex-test {
+      font-family: "Google Sans Flex", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+      font-variation-settings:
+        "slnt" 0,
+        "wdth" 100,
+        "GRAD" 0,
+        "ROND" 0;
+    }
+
+    body {
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(243, 243, 240, .94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar-brand {
+      font-weight: 800;
+      color: var(--ink) !important;
+      letter-spacing: -.3px;
+    }
+
+    .navbar-brand span {
+      color: var(--primary);
+    }
+
+    .nav-link {
+      font-size: .9rem;
+      color: var(--ink) !important;
+      padding: .4rem .75rem !important;
+      border-radius: 6px;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background: #e5e4de;
+    }
+
+    .nav-cta {
+      background: var(--primary) !important;
+      color: #fff !important;
+      border-radius: 6px;
+      font-weight: 600;
+      padding: .4rem 1rem !important;
+    }
+
+    .nav-cta:hover {
+      background: #00578c !important;
+      color: #fff !important;
+    }
+
+    /* Sections : titre + sous-titre */
+    .section-label {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: .4rem;
+    }
+
+    .section-title {
+      font-weight: 800;
+      margin-bottom: .35rem;
+    }
+
+    .section-sub {
+      color: var(--ink-soft);
+      margin-bottom: 2.5rem;
+    }
+
+    /* Boutons */
+    .btn-primary-custom {
+      background: var(--primary);
+      border: 1px solid var(--primary);
+      color: #fff;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: .65rem 1.4rem;
+    }
+
+    .btn-primary-custom:hover {
+      background: #00578c;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .btn-outline-custom {
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      font-weight: 600;
+      border-radius: 8px;
+      padding: .65rem 1.4rem;
+    }
+
+    .btn-outline-custom:hover {
+      background: var(--ink);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* Tags / badges projet */
+    .project-tag {
+      background: #e3eef6;
+      color: var(--primary);
+      border-radius: 5px;
+      padding: .2rem .55rem;
+      font-size: .75rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .project-period {
+      background: #e3eef6;
+      color: var(--primary);
+      border-radius: 999px;
+      padding: .25rem .8rem;
+      font-size: .75rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .insight-card {
+      border-left: 3px solid var(--primary);
+    }
+
+    /* Captures d'écran (placeholders) */
+    .screenshot {
+      border-radius: 10px;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, .9);
+      font-weight: 600;
+      font-size: .95rem;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+
+    .screenshot-thumb {
+      aspect-ratio: 16/9;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, .85);
+      font-weight: 600;
+      font-size: .72rem;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      border: 3px solid transparent;
+      transition: border-color .2s ease, transform .2s ease;
+    }
+
+    .screenshot-thumb:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .screenshot-thumb.active {
+      border-color: var(--primary);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--ink);
+      color: rgba(255, 255, 255, .6);
+      padding: 2.5rem 0;
+      font-size: .85rem;
+    }
+
+    footer a {
+      color: rgba(255, 255, 255, .8);
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    .footer-name {
+      color: #fff;
+      font-weight: 800;
+      display: block;
+      margin-bottom: .3rem;
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+
+<body class="google-sans-flex-test">
+
+  <!-- Header -->
+  <nav id="mainNav" class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#accueil">Loïck <span>CHERIMONT</span></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav align-items-center gap-1">
+          <li class="nav-item"><a class="nav-link" href="#accueil">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="#realisations">Réalisations</a></li>
+          <li class="nav-item"><a class="nav-link" href="#competences">Compétences</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experiences">Expériences</a></li>
+          <li class="nav-item"><a class="nav-link" href="#a-propos">A propos</a></li>
+          <li class="nav-item ms-lg-2">
+            <a class="nav-link nav-cta" href="#me-contacter">Me contacter</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Fiche projet -->
+  <main style="padding-top:76px">
+
+    <!-- En-tête projet -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row align-items-end g-4">
+          <div class="col-lg-8 fade-in">
+            <p class="section-label mb-2">// Fiche projet</p>
+            <h1 class="display-5 fw-bold" style="letter-spacing:-1px">Gestionnaire de tickets support</h1>
+            <p class="section-sub mt-3 mb-0" style="max-width:640px">
+              API REST de gestion de tickets support : authentification, cycle de vie des tickets,
+              commentaires et rapports. Un projet mené de bout en bout pour démontrer la maîtrise
+              de la stack <strong>Java / Spring Boot</strong>.
+            </p>
+          </div>
+          <div class="col-lg-4 fade-in" style="transition-delay:.1s">
+            <div class="d-flex flex-wrap justify-content-lg-end gap-2">
+              <span class="project-period">2025 – aujourd'hui</span>
+              <span class="project-tag">API REST</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Images : principale + captures -->
+    <section class="py-4">
+      <div class="container">
+        <div class="fade-in">
+          <div class="screenshot mb-3" style="background:linear-gradient(135deg,#0066A1,#0E1117);aspect-ratio:16/7">
+            Capture principale — Dashboard des tickets
+          </div>
+          <div class="row g-3">
+            <div class="col-md-4 fade-in">
+              <div class="screenshot-thumb active" role="img" aria-label="Capture : tableau de bord des tickets"
+                style="background:linear-gradient(135deg,#0E1117,#0066A1)">
+                Dashboard
+              </div>
+            </div>
+            <div class="col-md-4 fade-in" style="transition-delay:.06s">
+              <div class="screenshot-thumb" role="img" aria-label="Capture : page d'authentification"
+                style="background:linear-gradient(135deg,#2b5876,#4e4376)">
+                Authentification
+              </div>
+            </div>
+            <div class="col-md-4 fade-in" style="transition-delay:.12s">
+              <div class="screenshot-thumb" role="img" aria-label="Capture : tests unitaires"
+                style="background:linear-gradient(135deg,#4e4376,#2b5876)">
+                Tests unitaires
+              </div>
+            </div>
+          </div>
+          <p class="text-muted small mt-2 mb-0">Captures provisoires — à
+            remplacer par des captures réelles.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contenu -->
+    <section class="py-5">
+      <div class="container">
+
+            <!-- Contexte & objectifs -->
+            <div class="mb-5 fade-in">
+              <h2 class="h4 fw-bold mb-3">Contexte & objectifs</h2>
+              <p class="mb-3" style="color:var(--ink-soft)">
+                Construire une <strong>API REST complète</strong> de gestion de tickets support, pensée comme une
+                vraie application métier : authentification, gestion des rôles, cycle de vie des tickets
+                (nouveau → en cours → résolu), commentaires et tableaux de bord.
+              </p>
+              <p class="mb-0" style="color:var(--ink-soft)">
+                Objectifs : démontrer une maîtrise de la stack backend <strong>de bout en bout</strong> —
+                modélisation de données, sécurité, API, tests — et produire un code <strong>testé,
+                documenté</strong> et facile à faire évoluer.
+              </p>
+            </div>
+
+            <!-- Fonctionnalités principales -->
+            <div class="mb-5 fade-in">
+              <h2 class="h4 fw-bold mb-3">Fonctionnalités principales</h2>
+              <ul class="row list-unstyled mb-0 g-2" style="color:var(--ink-soft)">
+                <li class="col-md-6"><i class="bi bi-check-circle-fill text-primary me-2"></i>Authentification et
+                  gestion des rôles (utilisateur, agent, admin)</li>
+                <li class="col-md-6"><i class="bi bi-check-circle-fill text-primary me-2"></i>CRUD des tickets avec
+                  statut et priorité</li>
+                <li class="col-md-6"><i class="bi bi-check-circle-fill text-primary me-2"></i>Commentaires et suivi de
+                  conversation par ticket</li>
+                <li class="col-md-6"><i class="bi bi-check-circle-fill text-primary me-2"></i>Assignation des tickets
+                  aux agents</li>
+                <li class="col-md-6"><i class="bi bi-check-circle-fill text-primary me-2"></i>Filtres, recherche et
+                  pagination</li>
+              </ul>
+            </div>
+
+            <!-- Choix techniques -->
+            <div class="mb-5 fade-in">
+              <h2 class="h4 fw-bold mb-3">Choix techniques & compétences mobilisées</h2>
+              <p class="small mb-3" style="color:var(--ink-soft)">
+                Les choix retenus correspondent aux technologies réellement utilisées et maîtrisées sur ce projet.
+              </p>
+              <div class="d-flex flex-wrap gap-2">
+                <span class="project-tag">Java 25</span>
+                <span class="project-tag">Spring Boot</span>
+                <span class="project-tag">Spring Security</span>
+                <span class="project-tag">Spring Data JPA</span>
+                <span class="project-tag">Spring Web MVC</span>
+                <span class="project-tag">PostgreSQL</span>
+                <span class="project-tag">JUnit 5 / AssertJ</span>
+                <span class="project-tag">Mockito</span>
+                <span class="project-tag">Swagger UI</span>
+                <span class="project-tag">Docker / Docker Compose</span>
+              </div>
+            </div>
+
+            <!-- Difficultés & solutions -->
+            <div class="mb-5 fade-in">
+              <h2 class="h4 fw-bold mb-3">Difficultés
+                rencontrées & solutions apportées</h2>
+
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <div class="d-flex gap-2">
+                        <i class="bi bi-x-circle-fill text-danger"></i>
+                        <div>
+                          <h3 class="h6 fw-bold">Difficulté</h3>
+                          <p class="small mb-0" style="color:var(--ink-soft)">
+                            Sécuriser tous les endpoints selon le rôle de l'utilisateur sans dupliquer la logique
+                            de contrôle.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="d-flex gap-2">
+                        <i class="bi bi-check-circle-fill text-success"></i>
+                        <div>
+                          <h3 class="h6 fw-bold">Solution</h3>
+                          <p class="small mb-0" style="color:var(--ink-soft)">
+                            Configuration déclarative de <strong>Spring Security</strong> (règles par endpoint) et
+                            granularité par annotations, couverte par des tests de sécurité.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card mb-0">
+                <div class="card-body">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <div class="d-flex gap-2">
+                        <i class="bi bi-x-circle-fill text-danger"></i>
+                        <div>
+                          <h3 class="h6 fw-bold">Difficulté</h3>
+                          <p class="small mb-0" style="color:var(--ink-soft)">
+                            Gérer des relations <strong>JPA</strong> complexes (tickets, commentaires, utilisateurs)
+                            sans erreurs de lazy loading ni requêtes N+1.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="d-flex gap-2">
+                        <i class="bi bi-check-circle-fill text-success"></i>
+                        <div>
+                          <h3 class="h6 fw-bold">Solution</h3>
+                          <p class="small mb-0" style="color:var(--ink-soft)">
+                            <strong>Architecture en couches</strong> stricte (Controller → Service → Repository),
+                            DTOs explicites et tests unitaires Mockito sur les comportements critiques.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Enseignements tirés -->
+            <div class="mb-5 fade-in">
+              <h2 class="h4 fw-bold mb-3">Enseignements tirés</h2>
+              <div class="card insight-card">
+                <div class="card-body">
+                  <ul class="list-unstyled mb-0" style="color:var(--ink-soft)">
+                    <li class="mb-2"><i class="bi bi-lightbulb-fill text-primary me-2"></i>Sécurité pensée dès la
+                      conception :
+                      définir <strong>Spring Security</strong> et les rôles avant la logique métier évite de tout
+                      réécrire.</li>
+                    <li class="mb-2"><i class="bi bi-lightbulb-fill text-primary me-2"></i>L'<strong>architecture en
+                        couches</strong> et les DTOs rendent le code testable (Mockito) et facile à faire évoluer.</li>
+                    <li class="mb-2"><i class="bi bi-lightbulb-fill text-primary me-2"></i>Un <strong>modèle de
+                        données</strong>
+                      réfléchi en amont (relations JPA) évite les requêtes N+1 et les surprises de lazy loading.</li>
+                    <li class="mb-2"><i class="bi bi-lightbulb-fill text-primary me-2"></i>Documenter l'API
+                      (<strong>Swagger
+                        UI</strong>) transforme le projet en un outil utilisable par d'autres développeurs.</li>
+                    <li><i class="bi bi-lightbulb-fill text-primary me-2"></i>Les <strong>tests</strong> doivent cibler
+                      les
+                      comportements critiques plutôt que couvrir le code pour la forme.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Boutons -->
+            <div class="fade-in">
+              <div class="d-flex flex-column flex-md-row gap-3 justify-content-center">
+                <a class="btn btn-primary-custom" href="https://github.com/loickcherimont/ticketing-api"
+                  target="_blank"><i class="bi bi-github me-1"></i>Voir le code source</a>
+                <a class="btn btn-outline-custom" href="#"><i class="bi bi-box-arrow-up-right me-1"></i>Live Demo</a>
+              </div>
+            </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center">
+      <span class="footer-name">Loïck Cherimont</span>
+      <div>Développeur Java / Spring Boot Junior · Nantes, France</div>
+      <div class="mt-2">
+        <a href="#mentions">Mentions légales</a>
+        <span class="d-inline-block mx-2" style="color:rgba(255,255,255,.2)">•</span>
+        <span>© 2026 Loïck Cherimont</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+
+</html>

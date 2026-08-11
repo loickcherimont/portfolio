@@ -254,20 +254,22 @@ Pour chaque projet :
 
 #### Fiche projet
 
-Chaque projet dispose d'une page dédiée présentant :
+Chaque projet dispose d'une page dédiée. Structure de la fiche :
 
-* Titre du projet
+* En-tête projet : titre, description courte, badge de période, tags principaux
 * Image principale
 * Idéalement plusieurs captures d'écran supplémentaires (au moins 3 lorsque cela apporte une réelle valeur)
-* Contexte du projet / objectifs
-* Fonctionnalités principales
-* Choix techniques / compétences mobilisées
-* Difficultés rencontrées / solutions apportées
-* Éléments d'architecture lorsque pertinent
+* **Contexte & objectifs**
+* **Fonctionnalités principales** — 5 maximum, présentées en liste à puces avec icônes simples
+* **Choix techniques & compétences mobilisées** — badges des technologies réellement utilisées
+* **Difficultés rencontrées & solutions apportées** — une carte par thème, difficulté et solution présentées côte à côte
+* **Enseignements tirés** — encart de synthèse de ce que le projet a apporté
 * Bouton **« Voir le code source »** avec lien GitHub
 * Bouton **« Live Demo »** vers le projet en ligne
 
-La présentation détaillée des fiches projet sera notamment inspirée du portfolio React existant (`https://github.com/loickcherimont/ideas-portfolio-v3/blob/main/index.html`).
+Les boutons sont présentés en rangée centrée, empilés sur mobile, sans encart dédié.
+
+La présentation détaillée des fiches projet s'appuie sur le POC `instructions/project-file-poc.html`.
 
 #### Projets identifiés à ce stade
 
@@ -414,7 +416,7 @@ Les informations affichées doivent correspondre aux ressources réellement util
 | Élément                                                                                    | Source                                  |
 | ------------------------------------------------------------------------------------------ | --------------------------------------- |
 | Style général / bouton Contact du header / encart « Ce que ces expériences m'ont apporté » | POC réalisé avec Claude AI              |
-| Présentation détaillée des fiches projet                                                   | Portfolio React existant (`https://github.com/loickcherimont/ideas-portfolio-v3/blob/main/index.html`) |
+| Présentation détaillée des fiches projet                                                   | POC `instructions/project-file-poc.html` |
 | Contenu initial des mentions légales                                                       | Dépôt GitHub `devoir-portfolio-reactjs` |
 
 Les références servent uniquement de sources d'inspiration. Le portfolio final doit disposer d'une identité visuelle et d'une présentation propres.
