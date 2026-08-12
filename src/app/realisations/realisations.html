@@ -1,0 +1,19 @@
+<section id='realisations' class='bg-light border border-start-0 border-end-0 text-center text-lg-start'>
+  <div class='container'>
+    <p class='section-label' data-testid='realisations__label'>// Réalisations</p>
+    <h2 class='section-title' data-testid='realisations__title'>
+      Ce que j'ai construit
+    </h2>
+    <p class='section-sub' data-testid='realisations__subtitle'>
+      Des projets backend Java pensés comme de vraies applications, testés et documentés.
+    </p>
+
+    <div class='row g-4 justify-content-center'>
+      @for (project of projects(); track project.slug) {
+        <div class='col-12 col-md-6 col-lg-4'>
+          <app-project-card [project]='project' />
+        </div>
+      }
+    </div>
+  </div>
+</section>

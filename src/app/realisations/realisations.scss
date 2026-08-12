@@ -1,0 +1,14 @@
+.realisations {
+  &__next-card {
+    border-style: dashed;
+    border-color: var(--primary, #2772db);
+
+    code {
+      word-break: break-all;
+    }
+  }
+
+  &__next-icon {
+    font-size: 2.2rem;
+  }
+}

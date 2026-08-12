@@ -1,0 +1,182 @@
+@if (project(); as project) {
+<!-- En-tête projet -->
+<section class='py-5'>
+  <div class='container'>
+    <div class='row align-items-end g-4'>
+      <div class='col-lg-8'>
+        <p class='section-label mb-2 mt-3' data-testid='project-detail__label'>// Fiche projet</p>
+        <h1 class='display-5 fw-bold' data-testid='project-detail__title'>
+          {{ project.title }}
+        </h1>
+        <p class='section-sub mt-3 mb-0' data-testid='project-detail__description' style='max-width: 640px'>
+          {{ project.longDescription }}
+        </p>
+      </div>
+      <div class='col-lg-4'>
+        <div class='d-flex flex-wrap justify-content-lg-end gap-2' data-testid='project-detail__meta'>
+          <span class='project-period'>{{ project.period }}</span>
+          @for (tag of project.mainTags; track tag) {
+          <span class='project-tag'>{{ tag }}</span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Images : principale + captures -->
+<section class='py-4'>
+  <div class='container'>
+    @if (project.screenshots.length > 0) {
+    <div class='row g-3 justify-content-center text-center' data-testid='project-detail__screenshots'>
+      @for (screenshot of project.screenshots; track screenshot.imageUrl) {
+      <div class='col-12 col-md-6 col-lg-4 d-flex justify-content-center'>
+        <a [href]='screenshot.imageUrl' class='d-block'>
+          <img [ngSrc]='screenshot.imageUrl' [alt]='screenshot.alt' [attr.aria-label]='project.imageAlt' width='300'
+            height='200' class='img-thumbnail rounded' priority>
+        </a>
+      </div>
+      }
+    </div>
+    }
+  </div>
+</section>
+
+<!-- Contexte & objectifs -->
+@if (project.context) {
+<section class='py-5'>
+  <div class='container'>
+    <h2 class='h4 fw-bold mb-3' data-testid='project-detail__context-title'>
+      Contexte &amp; objectifs
+    </h2>
+    <p class='mb-0' data-testid='project-detail__context'>{{ project.context }}</p>
+  </div>
+</section>
+}
+
+<!-- Fonctionnalités principales -->
+@if (project.features.length > 0) {
+<section class='py-5'>
+  <div class='container'>
+    <h2 class='h4 fw-bold mb-3' data-testid='project-detail__features-title'>
+      Fonctionnalités principales
+    </h2>
+    <ul class='row list-unstyled mb-0 g-2'>
+      @for (feature of project.features; track feature) {
+      <li class='col-md-6' data-testid='project-detail__feature'>
+        <i class='bi bi-check-circle-fill text-primary me-2' aria-hidden='true'></i>{{ feature }}
+      </li>
+      }
+    </ul>
+  </div>
+</section>
+}
+
+<!-- Choix techniques -->
+@if (project.stack.length > 0) {
+<section class='py-5'>
+  <div class='container'>
+    <h2 class='h4 fw-bold mb-2' data-testid='project-detail__stack-title'>
+      Choix techniques &amp; compétences mobilisées
+    </h2>
+    <p class='small mb-3'>
+      Les choix retenus correspondent aux technologies réellement utilisées et maîtrisées sur ce
+      projet.
+    </p>
+    <div class='d-flex flex-wrap gap-2' data-testid='project-detail__stack'>
+      @for (tech of project.stack; track tech) {
+      <span class='project-tag'>{{ tech }}</span>
+      }
+    </div>
+  </div>
+</section>
+}
+
+<!-- Difficultés & solutions -->
+@if (project.difficulties.length > 0) {
+<section class='py-5'>
+  <div class='container'>
+    <h2 class='h4 fw-bold mb-3' data-testid='project-detail__difficulties-title'>
+      Difficultés rencontrées &amp; solutions apportées
+    </h2>
+    @for (item of project.difficulties; track item.difficulty) {
+    <div class='card mb-3' data-testid='project-detail__difficulty'>
+      <div class='card-body'>
+        <div class='row g-3'>
+          <div class='col-md-6'>
+            <div class='d-flex gap-2'>
+              <i class='bi bi-x-circle-fill text-danger' aria-hidden='true'></i>
+              <div>
+                <h3 class='h6 fw-bold'>Difficulté</h3>
+                <p class='small mb-0'>{{ item.difficulty }}</p>
+              </div>
+            </div>
+          </div>
+          <div class='col-md-6'>
+            <div class='d-flex gap-2'>
+              <i class='bi bi-check-circle-fill text-success' aria-hidden='true'></i>
+              <div>
+                <h3 class='h6 fw-bold'>Solution</h3>
+                <p class='small mb-0'>{{ item.solution }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</section>
+}
+
+<!-- Enseignements tirés -->
+@if (project.lessons.length > 0) {
+<section class='py-5'>
+  <div class='container'>
+    <h2 class='h4 fw-bold mb-3' data-testid='project-detail__lessons-title'>
+      Enseignements tirés
+    </h2>
+    <div class='card insight-card' data-testid='project-detail__lessons'>
+      <div class='card-body'>
+        <ul class='list-unstyled mb-0'>
+          @for (lesson of project.lessons; track lesson) {
+          <li class='mb-2'>
+            <i class='bi bi-lightbulb-fill text-primary me-2' aria-hidden='true'></i>{{ lesson }}
+          </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+}
+
+<!-- Boutons -->
+<section class='py-5'>
+  <div class='container'>
+    <div class='d-flex flex-column flex-md-row gap-3 justify-content-center' data-testid='project-detail__actions'>
+      <a class='btn btn-primary btn' [href]='project.githubUrl' target='_blank' rel='noopener noreferrer'
+        data-testid='project-detail__github'>
+        <i class='bi bi-github me-1' aria-hidden='true'></i>Voir le code source
+      </a>
+      <a class='btn btn-secondary btn' [href]='project.demoUrl' target='_blank' rel='noopener noreferrer'
+        data-testid='project-detail__demo'>
+        <i class='bi bi-box-arrow-up-right me-1' aria-hidden='true'></i>Live Demo
+      </a>
+    </div>
+  </div>
+</section>
+} @else {
+<section class='py-5'>
+  <div class='container text-center'>
+    <p class='section-label mb-2'>// Fiche projet</p>
+    <h1 class='display-6 fw-bold'>Projet introuvable</h1>
+    <p class='section-sub' data-testid='project-detail__not-found'>
+      Ce projet n'existe pas ou n'est plus disponible.
+    </p>
+    <a class='btn btn-primary' routerLink='/' data-testid='project-detail__back-home'>
+      <i class='bi bi-arrow-left me-1' aria-hidden='true'></i>Retour à l'accueil
+    </a>
+  </div>
+</section>
+}
