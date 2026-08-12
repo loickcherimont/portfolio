@@ -12,7 +12,18 @@ Personal portfolio v3 (Angular 22, Bootstrap 5.3.8, Sass) for Loïck Cherimont, 
 - Routing exists (`src/app/app.routes.ts`) but is currently **empty** — no routes defined yet.
 - Design tokens live in `src/styles.scss` as Bootstrap SCSS overrides (`$primary: #2772DB`, `$secondary`/`$body-color: #233142`, `$light: #F3F3F0`) plus a `@font-face` for "Google Sans Flex" pointing at `src/app/assets/fonts/...`.
 
-## Best practices
+## Coding conventions
+
+- To style components use maximum `Bootstrap` and if it required use `SCSS`
+- Follow this workflow to implement a stable feature :
+  - Use `instructions/cahier-des-charges-portfolio.md` and `instructions/*.html` files
+  - Establish a plan after prompt
+  - Implement the feature (code)
+  - Implement tests on component(s) (UI, services)
+  - Make a code review (fix last bugfixes)
+  - Explain what you made to developer
+- Use english for comments and the more as possible `JSDoc`
+- For `SCSS`, use BEM methodology
 
 You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
 

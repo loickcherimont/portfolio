@@ -1,0 +1,11 @@
+.project-card {
+	&--placeholder {
+		border-style: dashed;
+		border-color: var(--primary, #2772db);
+	}
+
+	&__image {
+		background-size: cover;
+		background-position: center;
+	}
+}

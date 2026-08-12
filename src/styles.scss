@@ -18,15 +18,14 @@
 
 /* Custom */
 /* Design tokens */
-// :root {
-// 	--ink: #233142;
-// 	--surface: #F3F3F0;
-// 	--card: #FFFFFF;
-// 	/* --primary:#0066A1; */
-// 	--primary: #2772db;
-// 	--border: #dfded8;
-// 	--ink-soft: #233142;
-// }
+:root {
+	--ink: #233142;
+	--surface: #F3F3F0;
+	--card: #FFFFFF;
+	--primary: #2772db;
+	--border: #dfded8;
+	--ink-soft: #233142;
+}
 
 // .google-sans-flex-test {
 // 	font-family: "Google Sans Flex", sans-serif;
@@ -46,10 +45,19 @@
 // scroll-padding-top = the navbar is fixed-top (~76px): without this offset the
 // section headings would land hidden underneath it. We reserve 76px at the top
 // of the scroll area so anchors stop just below the nav.
-html {
+html,
+body {
+	height: 100%;
 	scroll-behavior: smooth;
 	scroll-padding-top: 76px;
 }
+
+app-root {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
 
 // body {
 // 	background: white;
