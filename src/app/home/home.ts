@@ -3,10 +3,11 @@ import { Title } from '@angular/platform-browser';
 import { Hero } from '../hero/hero';
 import { Realisations } from '../realisations/realisations';
 import { Stack } from '../stack/stack';
+import { Experiences } from '../experiences/experiences';
 
 @Component({
   selector: 'app-home',
-  imports: [Hero, Realisations, Stack],
+  imports: [Hero, Realisations, Stack, Experiences],
   templateUrl: './home.html',
 })
 export class Home {

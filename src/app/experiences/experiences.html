@@ -1,0 +1,53 @@
+<section
+  id="experiences"
+  class="bg-light border border-start-0 border-end-0 text-center text-lg-start min-vh-100 d-flex flex-column justify-content-center"
+>
+  <div class="container">
+    <p class="section-label">// Expériences</p>
+    <h2 class="section-title">Parcours professionnel</h2>
+    <p class="section-sub">Un parcours atypique : du test logiciel au développement backend.</p>
+
+    <div class="row g-4">
+      @for (experience of experiences; track experience.role) {
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+                <div class="xp-role">
+                  {{ experience.role }}
+
+                  <!-- Pedagogical note: `note` is optional, so testing it for truthiness
+									is enough (`undefined`, `null` and `""` are all falsy).
+									The previous condition `note !== undefined || note !== "" ||
+									note !== null` was ALWAYS true: when note is undefined,
+									`note !== ""` alone made the whole OR chain pass. -->
+                  @if (experience.note) {
+                    <span class="text-muted fw-normal small">{{ experience.note }}</span>
+                  }
+                </div>
+                <span class="xp-period">{{ experience.period }}</span>
+              </div>
+              <div class="xp-company mt-1 text-primary">{{ experience.company }}</div>
+              <p class="xp-desc mt-3 mb-0" [innerHTML]="experience.description"></p>
+            </div>
+          </div>
+        </div>
+      }
+
+      <div class="col-md-6">
+        <div class="card insight-card h-100">
+          <div class="card-body">
+            <div class="xp-role mb-3" style="font-size: 0.95rem">
+              Ce que ces expériences m'ont apporté
+            </div>
+            <ul class="ps-3 mb-0" style="font-size: 0.88rem; color: var(--ink-soft)">
+              @for (takeaway of takeaways; track takeaway) {
+                <li class="mb-2">{{ takeaway }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
