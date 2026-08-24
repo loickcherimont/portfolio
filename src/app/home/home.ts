@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Hero } from '../hero/hero';
 import { Realisations } from '../realisations/realisations';
+import { Stack } from '../stack/stack';
 
 @Component({
   selector: 'app-home',
-  imports: [Hero, Realisations],
+  imports: [Hero, Realisations, Stack],
   templateUrl: './home.html',
 })
 export class Home {

@@ -1,0 +1,98 @@
+<section
+  id="competences"
+  class="bg-white border-top min-vh-100 d-flex flex-column justify-content-center"
+>
+  <div class="container">
+    <p class="section-label" data-testid="stack__label">// Compétences</p>
+    <h2 class="section-title" data-testid="stack__title">Stack technique & savoir-être</h2>
+    <p class="section-sub" data-testid="stack__subtitle">
+      Les technologies réellement maîtrisées — pas de termes que je ne peux pas expliquer en
+      entretien.
+    </p>
+
+    <div class="row g-4">
+      <!-- Backend -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="skill-group" data-testid="stack__group-backend">
+          <h4><i class="bi bi-cup-hot-fill text-primary me-2" aria-hidden="true"></i>Backend</h4>
+          <div class="d-flex flex-wrap gap-2">
+            @for (badge of backendBadges; track badge.label) {
+              <span [class]="'badge ' + badgeClass(badge.kind)">{{ badge.label }}</span>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Data + DevOps -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="skill-group" data-testid="stack__group-data">
+          <h4><i class="bi bi-database-fill text-primary me-2" aria-hidden="true"></i>Data</h4>
+          <div class="d-flex flex-wrap gap-2">
+            @for (badge of dataBadges; track badge.label) {
+              <span [class]="'badge ' + badgeClass(badge.kind)">{{ badge.label }}</span>
+            }
+          </div>
+        </div>
+        <div class="skill-group mt-4" data-testid="stack__group-devops">
+          <h4>
+            <i class="bi bi-gear-wide-connected text-primary me-2" aria-hidden="true"></i>DevOps
+          </h4>
+          <div class="d-flex flex-wrap gap-2">
+            @for (badge of devopsBadges; track badge.label) {
+              <span [class]="'badge ' + badgeClass(badge.kind)">{{ badge.label }}</span>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Testing + IA -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="skill-group" data-testid="stack__group-testing">
+          <h4><i class="bi bi-bug-fill text-primary me-2" aria-hidden="true"></i>Testing</h4>
+          <div class="d-flex flex-wrap gap-2">
+            @for (badge of testingBadges; track badge.label) {
+              <span [class]="'badge ' + badgeClass(badge.kind)">{{ badge.label }}</span>
+            }
+          </div>
+        </div>
+        <div class="skill-group mt-4" data-testid="stack__group-ia">
+          <h4><i class="bi bi-robot text-primary me-2" aria-hidden="true"></i>IA</h4>
+          <div class="d-flex flex-wrap gap-2">
+            @for (badge of iaBadges; track badge.label) {
+              <span [class]="'badge ' + badgeClass(badge.kind)">{{ badge.label }}</span>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Frontend -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="skill-group" data-testid="stack__group-frontend">
+          <h4>
+            <i class="bi bi-window-stack text-primary me-2" aria-hidden="true"></i>Frontend
+            <span class="text-muted fw-normal small">(compétence complémentaire)</span>
+          </h4>
+          <div class="d-flex flex-wrap gap-2">
+            @for (badge of frontendBadges; track badge.label) {
+              <span [class]="'badge ' + badgeClass(badge.kind)">{{ badge.label }}</span>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Soft skills -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="skill-group" data-testid="stack__group-soft-skills">
+          <h4>
+            <i class="bi bi-person-check text-primary me-2" aria-hidden="true"></i>Soft skills
+          </h4>
+          <div class="d-flex flex-wrap gap-2">
+            @for (badge of softSkillBadges; track badge.label) {
+              <span [class]="'badge ' + badgeClass(badge.kind)">{{ badge.label }}</span>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

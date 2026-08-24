@@ -3,6 +3,9 @@ import { provideRouter } from '@angular/router';
 
 import { Home } from './home';
 
+const normalizeText = (value: string | null | undefined): string =>
+  value?.replace(/\s+/g, ' ').trim() ?? '';
+
 describe('Home', () => {
   let component: Home;
   let fixture: ComponentFixture<Home>;
@@ -26,6 +29,14 @@ describe('Home', () => {
     const title = fixture.nativeElement.querySelector('[data-testid="realisations__title"]');
 
     expect(title?.textContent?.trim()).toBe("Ce que j'ai construit");
+  });
+
+  it('should render the stack section after the realisations section', () => {
+    const stackLabel = fixture.nativeElement.querySelector('[data-testid="stack__label"]');
+    const stackTitle = fixture.nativeElement.querySelector('[data-testid="stack__title"]');
+
+    expect(normalizeText(stackLabel?.textContent)).toBe('// Compétences');
+    expect(normalizeText(stackTitle?.textContent)).toBe('Stack technique & savoir-être');
   });
 
   it('should set the document title for SEO', () => {

@@ -4,7 +4,8 @@ import { provideRouter } from '@angular/router';
 import { ProjectsService } from './projects.service';
 import { Realisations } from './realisations';
 
-const normalizeText = (value: string | null | undefined): string => value?.replace(/\s+/g, ' ').trim() ?? '';
+const normalizeText = (value: string | null | undefined): string =>
+  value?.replace(/\s+/g, ' ').trim() ?? '';
 
 describe('Realisations', () => {
   let component: Realisations;
@@ -34,5 +35,13 @@ describe('Realisations', () => {
 
     expect(cardImg).toBeTruthy();
     expect(cardBtn).toBeTruthy();
+  });
+
+  it('should fill the full viewport height like the hero', () => {
+    const section = fixture.nativeElement.querySelector('#realisations');
+
+    expect(section?.classList.contains('min-vh-100')).toBe(true);
+    expect(section?.classList.contains('d-flex')).toBe(true);
+    expect(section?.classList.contains('justify-content-center')).toBe(true);
   });
 });

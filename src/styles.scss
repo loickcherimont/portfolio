@@ -1,30 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
-@use "bootstrap/scss/bootstrap" with ($primary: #2772DB,
-	$secondary: #233142,
-	$light: #F3F3F0,
-	$body-color: #233142,
-	$font-family-sans-serif: ("Google Sans Flex", sans-serif));
+@use 'bootstrap/scss/bootstrap' with (
+  $primary: #2772db,
+  $secondary: #233142,
+  $light: #f3f3f0,
+  $body-color: #233142,
+  $font-family-sans-serif: (
+    'Google Sans Flex',
+    sans-serif,
+  )
+);
 
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 @font-face {
-	font-family: "Google Sans Flex";
-	src: url("./app/assets/fonts/Google_Sans_Flex/GoogleSansFlex-VariableFont_GRAD\,ROND\,opsz\,slnt\,wdth\,wght.ttf");
+  font-family: 'Google Sans Flex';
+  src: url('./app/assets/fonts/Google_Sans_Flex/GoogleSansFlex-VariableFont_GRAD\,ROND\,opsz\,slnt\,wdth\,wght.ttf');
 }
 
 /* Custom */
 /* Design tokens */
 :root {
-	--ink: #233142;
-	--surface: #F3F3F0;
-	--card: #FFFFFF;
-	--primary: #2772db;
-	--border: #dfded8;
-	--ink-soft: #233142;
+  --ink: #233142;
+  --surface: #f3f3f0;
+  --card: #ffffff;
+  --primary: #2772db;
+  --border: #dfded8;
+  --ink-soft: #233142;
 }
 
 // .google-sans-flex-test {
@@ -39,25 +44,22 @@
 // 		"ROND" 0;
 // }
 
-
-
 // Smooth scrolling to anchor links (#realisations, #competences…) + top offset.
 // scroll-padding-top = the navbar is fixed-top (~76px): without this offset the
 // section headings would land hidden underneath it. We reserve 76px at the top
 // of the scroll area so anchors stop just below the nav.
 html,
 body {
-	height: 100%;
-	scroll-behavior: smooth;
-	scroll-padding-top: 76px;
+  height: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
 }
 
 app-root {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
-
 
 // body {
 // 	background: white;
@@ -77,14 +79,14 @@ app-root {
 // }
 
 section {
-	padding: 4.5rem 0;
+  padding: 4.5rem 0;
 }
 
 /* Navbar */
 .navbar {
-	background: rgba(243, 243, 240, .94);
-	backdrop-filter: blur(12px);
-	border-bottom: 1px solid var(--border);
+  background: rgba(243, 243, 240, 0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
 }
 
 // .navbar-brand {
@@ -98,15 +100,15 @@ section {
 // }
 
 .nav-link {
-	font-size: .9rem;
-	color: var(--ink) !important;
-	padding: .5rem 1rem !important;
-	border-radius: 6px;
+  font-size: 0.9rem;
+  color: var(--ink) !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 6px;
 }
 
 .nav-link:hover,
 .nav-link.active {
-	background: #e5e4de;
+  background: #e5e4de;
 }
 
 // .nav-cta {
@@ -124,22 +126,22 @@ section {
 
 /* Sections : titre + sous-titre */
 .section-label {
-	font-size: .75rem;
-	font-weight: 700;
-	letter-spacing: .12em;
-	text-transform: uppercase;
-	color: var(--primary);
-	margin-bottom: .4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.4rem;
 }
 
 .section-title {
-	font-weight: 800;
-	margin-bottom: .35rem;
+  font-weight: 800;
+  margin-bottom: 0.35rem;
 }
 
 .section-sub {
-	color: var(--ink-soft);
-	margin-bottom: 2.5rem;
+  color: var(--ink-soft);
+  margin-bottom: 2.5rem;
 }
 
 /* Cards */
@@ -161,111 +163,82 @@ section {
 
 /* Project */
 .project-title {
-	font-weight: 700;
-	font-size: 1.05rem;
-	margin-bottom: .3rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
 }
 
 .project-period {
-	font-size: .78rem;
-	color: var(--ink-soft);
-	font-family: monospace;
-	margin-bottom: .7rem;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  font-family: monospace;
+  margin-bottom: 0.7rem;
 }
 
 .project-desc {
-	font-size: .9rem;
-	color: var(--ink-soft);
-	flex: 1;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  flex: 1;
 }
 
 .project-tag {
-	background: #e3eef6;
-	color: var(--primary);
-	border-radius: 5px;
-	padding: .2rem .55rem;
-	font-size: .75rem;
-	font-weight: 600;
+  background: #e3eef6;
+  color: var(--primary);
+  border-radius: 5px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
 .screenshot {
-	border-radius: 10px;
-	aspect-ratio: 16/9;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: rgba(255, 255, 255, .9);
-	font-weight: 600;
-	font-size: .95rem;
-	letter-spacing: .03em;
-	text-transform: uppercase;
+  border-radius: 10px;
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 /* Skills */
 .skill-group h4 {
-	font-size: .95rem;
-	font-weight: 700;
-	margin-bottom: .75rem;
-}
-
-.badge {
-	font-weight: 600;
-}
-
-.badge-featured {
-	background: var(--primary);
-	color: #fff;
-	font-size: .8rem;
-	padding: .45rem .8rem;
-	border-radius: 999px;
-}
-
-.badge-standard {
-	background: #fff;
-	color: var(--ink);
-	border: 1px solid var(--border);
-	font-size: .8rem;
-	padding: .45rem .8rem;
-	border-radius: 999px;
-}
-
-.badge-soft {
-	background: #e7f3ec;
-	color: #1e6b46;
-	font-size: .8rem;
-	padding: .45rem .8rem;
-	border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
 }
 
 /* Experience */
 .xp-period {
-	background: #e3eef6;
-	color: var(--primary);
-	border-radius: 999px;
-	padding: .25rem .8rem;
-	font-size: .75rem;
-	font-weight: 600;
-	white-space: nowrap;
+  background: #e3eef6;
+  color: var(--primary);
+  border-radius: 999px;
+  padding: 0.25rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .xp-role {
-	font-weight: 700;
-	font-size: 1.02rem;
+  font-weight: 700;
+  font-size: 1.02rem;
 }
 
 .xp-company {
-	color: var(--primary);
-	font-weight: 600;
-	font-size: .88rem;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.88rem;
 }
 
 .xp-desc {
-	font-size: .88rem;
-	color: var(--ink-soft);
+  font-size: 0.88rem;
+  color: var(--ink-soft);
 }
 
 .insight-card {
-	border-left: 3px solid var(--primary);
+  border-left: 3px solid var(--primary);
 }
 
 /* Animations - To reactivate later with Angular and TypeScript */
