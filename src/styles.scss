@@ -32,18 +32,6 @@
   --ink-soft: #233142;
 }
 
-// .google-sans-flex-test {
-// 	font-family: "Google Sans Flex", sans-serif;
-// 	font-optical-sizing: auto;
-// 	font-weight: 400;
-// 	font-style: normal;
-// 	font-variation-settings:
-// 		"slnt" 0,
-// 		"wdth" 100,
-// 		"GRAD" 0,
-// 		"ROND" 0;
-// }
-
 // Smooth scrolling to anchor links (#realisations, #competences…) + top offset.
 // scroll-padding-top = the navbar is fixed-top (~76px): without this offset the
 // section headings would land hidden underneath it. We reserve 76px at the top
@@ -61,23 +49,6 @@ app-root {
   min-height: 100vh;
 }
 
-// body {
-// 	background: white;
-// 	color: var(--ink);
-// 	font-size: 1rem;
-// 	line-height: 1.65;
-// 	-webkit-font-smoothing: antialiased;
-// }
-
-// a {
-// 	color: var(--primary);
-// 	text-decoration: none;
-// }
-
-// a:hover {
-// 	text-decoration: underline;
-// }
-
 section {
   padding: 4.5rem 0;
 }
@@ -88,16 +59,6 @@ section {
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
-
-// .navbar-brand {
-// 	font-weight: 800;
-// 	color: var(--ink) !important;
-// 	letter-spacing: -.3px;
-// }
-
-// .navbar-brand span {
-// 	color: var(--primary);
-// }
 
 .nav-link {
   font-size: 0.9rem;
@@ -110,19 +71,6 @@ section {
 .nav-link.active {
   background: #e5e4de;
 }
-
-// .nav-cta {
-// 	background: var(--primary) !important;
-// 	color: #fff !important;
-// 	border-radius: 6px;
-// 	font-weight: 600;
-// 	padding: .4rem 1rem !important;
-// }
-
-// .nav-cta:hover {
-// 	background: #00578c !important;
-// 	color: #fff !important;
-// }
 
 /* Sections : titre + sous-titre */
 .section-label {
@@ -143,23 +91,6 @@ section {
   color: var(--ink-soft);
   margin-bottom: 2.5rem;
 }
-
-/* Cards */
-// .card {
-// 	background: var(--card);
-// 	border: 1px solid var(--border);
-// 	border-radius: 12px;
-// 	transition: transform .25s ease, box-shadow .25s ease;
-// }
-
-// .card:hover {
-// 	transform: translateY(-3px);
-// 	box-shadow: 0 10px 28px rgba(14, 17, 23, .10);
-// }
-
-// .card-body {
-// 	padding: 1.5rem;
-// }
 
 /* Project */
 .project-title {
