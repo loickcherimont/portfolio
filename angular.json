@@ -32,6 +32,11 @@
                 "glob": "*.jpg",
                 "input": "src/app/hero",
                 "output": "/hero/"
+              },
+              {
+                "glob": "*.pdf",
+                "input": "src/app/contact",
+                "output": "/contact/"
               }
             ],
             "styles": [
