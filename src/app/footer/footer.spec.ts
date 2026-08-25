@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { Footer } from './footer';
 
@@ -9,6 +10,9 @@ describe('Footer', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Footer],
+      // The footer renders a `routerLink`: the Router must be provided for the
+      // directive to resolve the link into an actual `href` attribute.
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Footer);
@@ -38,9 +42,9 @@ describe('Footer', () => {
     expect(copyrightParagraph?.textContent?.trim()).toBe('Copyright © 2026 | Loïck CHERIMONT | Tous droits réservés.');
   });
 
-  it('should link to "#"', () => {
+  it('should link to the legal mentions page', () => {
     const legalLink = fixture.nativeElement.querySelector('[data-testid="footer__link"]');
 
-    expect(legalLink?.getAttribute('href')).toBe('#');
+    expect(legalLink?.getAttribute('href')).toBe('/mentions-legales');
   });
 });
