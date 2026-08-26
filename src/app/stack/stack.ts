@@ -8,7 +8,7 @@ type Badge = { label: string; kind?: 'featured' | 'standard' | 'soft' };
 })
 export class Stack {
   protected readonly backendBadges: Badge[] = [
-    { label: 'Java 25', kind: 'featured' },
+    { label: 'Java 21', kind: 'featured' },
     { label: 'Spring Boot', kind: 'featured' },
     { label: 'Spring Security' },
     { label: 'Spring Data JPA (Hibernate)' },

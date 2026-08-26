@@ -81,10 +81,10 @@ describe('ProjectDetail', () => {
     const demo = el?.querySelector('[data-testid="project-detail__demo"]');
 
     expect(github?.getAttribute('href')).toBe('https://github.com/loickcherimont/ticketing-api');
-    expect(demo).toBeNull();
+    expect(demo?.getAttribute('href')).toBe('https://loickcherimont.github.io/ticketing-web-v2');
   });
 
-  it('should switch the main image when a screenshot is selected', async () => {
+  it('should render the main image and screenshots', async () => {
     TestBed.configureTestingModule({
       imports: [ProjectDetail],
       providers: [provideRouter(routes)],
@@ -93,23 +93,15 @@ describe('ProjectDetail', () => {
     const harness = await RouterTestingHarness.create();
     await harness.navigateByUrl('/realisations/gestionnaire-tickets-support', ProjectDetail);
     const el = harness.routeNativeElement;
+
     const mainImage = el?.querySelector('[data-testid="project-detail__main-image"]');
-    const thumbnail = el?.querySelector(
-      '[data-testid="project-detail__thumbnail-Authentification"]',
-    ) as HTMLButtonElement | null;
 
-    expect(thumbnail).toBeTruthy();
+    expect(mainImage).toBeTruthy();
+    expect(mainImage?.getAttribute('alt')).toContain('Aperçu');
 
-    const beforeStyle = mainImage?.getAttribute('style');
+    const screenshots = el?.querySelectorAll('[data-testid="project-detail__screenshots"] img');
 
-    thumbnail?.click();
-    harness.fixture.detectChanges();
-
-    const updatedImage = el?.querySelector('[data-testid="project-detail__main-image"]');
-
-    expect(beforeStyle).toContain('Dashboard');
-    expect(updatedImage?.getAttribute('style')).toContain('Authentification');
-    expect(updatedImage?.getAttribute('style')).not.toBe(beforeStyle);
+    expect(screenshots?.length).toBe(3);
   });
 
   it('should render a not-found state for an unknown slug', async () => {

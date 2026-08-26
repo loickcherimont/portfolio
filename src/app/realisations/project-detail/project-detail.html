@@ -24,23 +24,34 @@
   </div>
 </section>
 
-<!-- Images : principale + captures -->
+<!-- Image principale -->
+@if (mainImage()) {
+<section class='py-4'>
+  <div class='container text-center'>
+    <img [ngSrc]='mainImage()' [alt]='project.imageAlt'
+      width='800' height='450' class='img-fluid rounded shadow-sm'
+      data-testid='project-detail__main-image' priority>
+  </div>
+</section>
+}
+
+<!-- Captures d'écran -->
+@if (project.screenshots.length > 0) {
 <section class='py-4'>
   <div class='container'>
-    @if (project.screenshots.length > 0) {
     <div class='row g-3 justify-content-center text-center' data-testid='project-detail__screenshots'>
       @for (screenshot of project.screenshots; track screenshot.imageUrl) {
       <div class='col-12 col-md-6 col-lg-4 d-flex justify-content-center'>
         <a [href]='screenshot.imageUrl' class='d-block'>
-          <img [ngSrc]='screenshot.imageUrl' [alt]='screenshot.alt' [attr.aria-label]='project.imageAlt' width='300'
+          <img [ngSrc]='screenshot.imageUrl' [alt]='screenshot.alt' width='300'
             height='200' class='img-thumbnail rounded' priority>
         </a>
       </div>
       }
     </div>
-    }
   </div>
 </section>
+}
 
 <!-- Contexte & objectifs -->
 @if (project.context) {
@@ -76,13 +87,9 @@
 @if (project.stack.length > 0) {
 <section class='py-5'>
   <div class='container'>
-    <h2 class='h4 fw-bold mb-2' data-testid='project-detail__stack-title'>
+    <h2 class='h4 fw-bold mb-3' data-testid='project-detail__stack-title'>
       Choix techniques &amp; compétences mobilisées
     </h2>
-    <p class='small mb-3'>
-      Les choix retenus correspondent aux technologies réellement utilisées et maîtrisées sur ce
-      projet.
-    </p>
     <div class='d-flex flex-wrap gap-2' data-testid='project-detail__stack'>
       @for (tech of project.stack; track tech) {
       <span class='project-tag'>{{ tech }}</span>
@@ -155,14 +162,16 @@
 <section class='py-5'>
   <div class='container'>
     <div class='d-flex flex-column flex-md-row gap-3 justify-content-center' data-testid='project-detail__actions'>
-      <a class='btn btn-primary btn' [href]='project.githubUrl' target='_blank' rel='noopener noreferrer'
+      <a class='btn btn-primary' [href]='project.githubUrl' target='_blank' rel='noopener noreferrer'
         data-testid='project-detail__github'>
         <i class='bi bi-github me-1' aria-hidden='true'></i>Voir le code source
       </a>
-      <a class='btn btn-secondary btn' [href]='project.demoUrl' target='_blank' rel='noopener noreferrer'
+      @if (project.demoUrl) {
+      <a class='btn btn-secondary' [href]='project.demoUrl' target='_blank' rel='noopener noreferrer'
         data-testid='project-detail__demo'>
         <i class='bi bi-box-arrow-up-right me-1' aria-hidden='true'></i>Live Demo
       </a>
+      }
     </div>
   </div>
 </section>

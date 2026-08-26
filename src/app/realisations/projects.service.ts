@@ -2,56 +2,57 @@ import { Service, computed, signal } from '@angular/core';
 import { Project } from './project';
 
 const ticketingImages = {
-  dashboard: 'https://placehold.co/600x400/233142/FFFFFF?text=Dashboard+tickets',
-  auth: 'https://placehold.co/600x400/1e6b46/FFFFFF?text=Authentification',
-  tests: 'https://placehold.co/600x400/4e4376/FFFFFF?text=Tests+unitaires',
+  hub: '/realisations/ticketing-api-hub.png',
+  login: '/realisations/ticketing-web-app-login.png',
+  main: '/realisations/ticketing-web-app-main.png',
 };
 
-const PROJECTS: Project[] = [
+export const PROJECTS: Project[] = [
   {
     slug: 'gestionnaire-tickets-support',
     title: 'Gestionnaire de tickets support',
     shortDescription:
-      'API REST en Java / Spring Boot pour la gestion de tickets support, avec authentification, tests unitaires JUnit / AssertJ et Mockito.',
+      'API REST en Java / Spring Boot avec authentification JWT, PostgreSQL et tests JUnit 5 / AssertJ / Mockito.',
     longDescription:
-      'API REST complète de gestion de tickets support : authentification, cycle de vie des tickets, commentaires et tableaux de bord. Un projet mené de bout en bout pour démontrer la maîtrise de la stack Java / Spring Boot.',
+      'API REST Java / Spring Boot sécurisée avec authentification JWT, contrôle d\'accès par rôles (USER / AGENT) et cycle de vie complet des tickets. PostgreSQL, tests JUnit 5 / Mockito, Swagger UI, Docker, CI/CD avec GitHub Actions et JaCoCo. Déployée sur Railway.',
     period: "2025 – aujourd'hui",
     mainTags: ['API REST', 'Spring Security'],
-    imageUrl: ticketingImages.dashboard,
+    imageUrl: ticketingImages.hub,
     imageAlt: 'Aperçu du gestionnaire de tickets support',
     screenshots: [
       {
-        imageUrl: ticketingImages.dashboard,
-        alt: 'Capture : tableau de bord des tickets',
-        label: 'Dashboard',
+        imageUrl: ticketingImages.hub,
+        alt: 'Capture : Hub de l\'API de gestion de ticket avec Spring Boot',
+        label: 'API de gestion de ticket',
       },
       {
-        imageUrl: ticketingImages.auth,
+        imageUrl: ticketingImages.login,
         alt: "Capture : page d'authentification",
         label: 'Authentification',
       },
       {
-        imageUrl: ticketingImages.tests,
-        alt: 'Capture : tests unitaires',
-        label: 'Tests unitaires',
+        imageUrl: ticketingImages.main,
+        alt: 'Capture : Page principale sous Angular',
+        label: 'Page principale',
       },
     ],
     context:
-      'Construire une API REST complète de gestion de tickets support, pensée comme une vraie application métier : authentification, gestion des rôles, cycle de vie des tickets (nouveau → en cours → résolu), commentaires et tableaux de bord. Objectifs : démontrer une maîtrise de la stack backend de bout en bout — modélisation de données, sécurité, API, tests — et produire un code testé, documenté et facile à faire évoluer.',
+      'Construire une API REST complète de gestion de tickets support, pensée comme une vraie application métier : authentification JWT, gestion des rôles (USER / AGENT), cycle de vie des tickets (OPEN → IN_PROGRESS → SOLVED). Objectifs : maîtriser la stack backend de bout en bout — Spring Security, modélisation JPA, API REST, tests — et produire un code testé, documenté (Swagger UI) et facile à faire évoluer.',
     features: [
-      'Authentification et gestion des rôles (utilisateur, agent, admin)',
-      'CRUD des tickets avec statut et priorité',
-      'Commentaires et suivi de conversation par ticket',
-      'Assignation des tickets aux agents',
-      'Filtres, recherche et pagination',
+      'Authentification JWT et contrôle d\'accès par rôles (USER / AGENT)',
+      'CRUD des tickets avec cycle de vie (OPEN → IN_PROGRESS → SOLVED)',
+      'Documentation API interactive avec Swagger UI',
+      'Pipeline CI/CD automatisé (GitHub Actions + JaCoCo)',
+      'Containerisation Docker et déploiement Railway',
     ],
     stack: [
-      'Java 25',
+      'Java 21',
       'Spring Boot',
       'Spring Security',
       'Spring Data JPA',
       'Spring Web MVC',
       'PostgreSQL',
+      'Lombok',
       'JUnit 5 / AssertJ',
       'Mockito',
       'Swagger UI',
@@ -66,7 +67,7 @@ const PROJECTS: Project[] = [
       },
       {
         difficulty:
-          'Gérer des relations JPA complexes (tickets, commentaires, utilisateurs) sans erreurs de lazy loading ni requêtes N+1.',
+          'Gérer des relations JPA complexes (tickets, utilisateurs) sans erreurs de lazy loading ni requêtes N+1.',
         solution:
           'Architecture en couches stricte (Controller → Service → Repository), DTOs explicites et tests unitaires Mockito sur les comportements critiques.',
       },
@@ -79,7 +80,7 @@ const PROJECTS: Project[] = [
       'Les tests doivent cibler les comportements critiques plutôt que couvrir le code pour la forme.',
     ],
     githubUrl: 'https://github.com/loickcherimont/ticketing-api',
-    demoUrl: '',
+    demoUrl: 'https://loickcherimont.github.io/ticketing-web-v2',
     isPlaceholder: false,
   },
 ];

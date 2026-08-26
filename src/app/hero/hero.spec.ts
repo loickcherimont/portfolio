@@ -28,14 +28,16 @@ describe('Hero', () => {
 
     expect(titleText).toContain('Développeur');
     expect(titleText).toContain('Back-End Java / Spring Boot');
-    expect(titleText).toContain('Junior');
   });
 
   it('should display the introduction paragraph', () => {
     const paragraph = fixture.nativeElement.querySelector('[data-testid="hero__paragraph"]');
     const paragraphText = normalizeText(paragraph?.textContent);
 
-    expect(paragraphText).toContain('Orienté architecture backend : API REST, Spring Security, Spring Data JPA et tests (JUnit 5 / Mockito). Complément Angular pour produire une application complète lorsque c\'est nécessaire. Capable de mener un projet de bout en bout.');
+    expect(paragraphText).toContain('API REST Java / Spring Boot');
+    expect(paragraphText).toContain('outils d\'IA');
+    expect(paragraphText).toContain('parcours atypique');
+    expect(paragraphText).toContain('Découvrez ce que ça donne concrètement');
   });
 
   it('should display the portfolio photo', () => {
@@ -43,7 +45,7 @@ describe('Hero', () => {
 
     expect(portrait).toBeTruthy();
     expect(portrait?.getAttribute('src')).toContain('loick-cherimont-portrait.jpg');
-    expect(portrait?.getAttribute('alt')).toBe('Portrait de Loïck CHERIMONT');
+    expect(portrait?.getAttribute('alt')).toBe('Loïck Cherimont, développeur Backend Java Spring Boot à Nantes');
   });
 
   it('should display the three stats with their values and labels', () => {
@@ -52,9 +54,9 @@ describe('Hero', () => {
     expect(statValues.length).toBe(3);
 
     const expectedStats = [
-      { id: 1, value: '2', label: 'Expériences professionnelles' },
-      { id: 2, value: '3', label: 'Ans d\'apprentissage du développement' },
-      { id: 3, value: '5+', label: 'Projets construits' },
+      { id: 1, value: '3', label: 'Expériences IT' },
+      { id: 2, value: '7', label: 'Ans d\'apprentissage autodidacte' },
+      { id: 3, value: '1', label: 'Projet construit et déployé' },
     ];
 
     for (const stat of expectedStats) {

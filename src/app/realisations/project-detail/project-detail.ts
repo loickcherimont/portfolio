@@ -1,8 +1,11 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
+import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ProjectsService } from '../projects.service';
-import { NgOptimizedImage } from "@angular/common";
+import { NgOptimizedImage } from '@angular/common';
+
+const BASE_URL = 'https://loickcherimont.github.io/pv3';
 
 @Component({
   selector: 'app-project-detail',
@@ -13,6 +16,8 @@ export class ProjectDetail {
   private readonly route = inject(ActivatedRoute);
   private readonly projectsService = inject(ProjectsService);
   private readonly title = inject(Title);
+  private readonly meta = inject(Meta);
+  private readonly document = inject(DOCUMENT);
 
   protected readonly project = computed(() => {
     const slug = this.route.snapshot.paramMap.get('slug');
@@ -26,14 +31,49 @@ export class ProjectDetail {
     const project = slug ? this.projectsService.getProject(slug) : undefined;
 
     if (project) {
-      this.title.setTitle(`${project.title} — Loïck CHERIMONT`);
+      const pageTitle = `${project.title} — Loïck CHERIMONT`;
+      const pageUrl = `${BASE_URL}/realisations/${slug}`;
+      const imageUrl = `${BASE_URL}${project.imageUrl}`;
+
+      this.title.setTitle(pageTitle);
+      this.meta.updateTag({ name: 'description', content: project.shortDescription });
+
+      // Open Graph
+      this.meta.updateTag({ property: 'og:title', content: pageTitle });
+      this.meta.updateTag({ property: 'og:description', content: project.shortDescription });
+      this.meta.updateTag({ property: 'og:type', content: 'article' });
+      this.meta.updateTag({ property: 'og:url', content: pageUrl });
+      this.meta.updateTag({ property: 'og:image', content: imageUrl });
+
+      // Twitter/X Card
+      this.meta.updateTag({ name: 'twitter:title', content: pageTitle });
+      this.meta.updateTag({ name: 'twitter:description', content: project.shortDescription });
+      this.meta.updateTag({ name: 'twitter:image', content: imageUrl });
+
+      // Canonical URL
+      this.updateCanonical(pageUrl);
+
       this.mainImage.set(project.imageUrl);
     } else {
       this.title.setTitle('Projet introuvable — Loïck CHERIMONT');
+      this.meta.updateTag({
+        name: 'description',
+        content: 'Projet introuvable sur le portfolio de Loïck Cherimont.',
+      });
     }
   }
 
   protected selectScreenshot(imageUrl: string): void {
     this.mainImage.set(imageUrl);
+  }
+
+  private updateCanonical(url: string): void {
+    let canonical = this.document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = this.document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      this.document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', url);
   }
 }

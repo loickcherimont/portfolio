@@ -27,7 +27,7 @@ describe('Footer', () => {
   it('should display name and position', () => {
     const footerName = fixture.nativeElement.querySelector('[data-testid="footer__name"]');
 
-    expect(footerName?.textContent?.trim()).toBe('Loïck CHERIMONT | Développeur Back-End Java / Spring Boot Junior');
+    expect(footerName?.textContent?.trim()).toBe('Loïck CHERIMONT | Développeur Back-End Java / Spring Boot');
   });
 
   it('should display legal link', () => {
