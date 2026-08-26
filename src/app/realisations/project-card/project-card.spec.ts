@@ -55,8 +55,8 @@ describe('ProjectCard', () => {
   it('should render the preview image with a placeholder', () => {
     const image = fixture.nativeElement.querySelector('.project-card__image');
 
-    expect(image?.getAttribute('style')).toContain('placehold.co');
-    expect(image?.getAttribute('aria-label')).toBe('Aperçu du projet de test');
+    expect(image?.getAttribute('src')).toContain('placehold.co');
+    expect(image?.getAttribute('alt')).toBe('Aperçu du projet de test');
   });
 
   it('should link "Découvrir le projet" to the detail page', () => {
@@ -84,7 +84,7 @@ describe('ProjectCard', () => {
 
     const cta = fixture.nativeElement.querySelector('[data-testid="project-card__cta-test-project"]');
 
-    expect(cta?.disabled).toBe(true);
+    expect(cta?.getAttribute('aria-disabled')).toBe('true');
     expect(normalizeText(cta?.textContent)).toBe('Bientôt disponible');
   });
 });

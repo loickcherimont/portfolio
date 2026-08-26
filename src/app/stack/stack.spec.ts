@@ -31,7 +31,7 @@ describe('Stack', () => {
     expect(normalizeText(label?.textContent)).toBe('// Compétences');
     expect(normalizeText(title?.textContent)).toContain('Stack technique & savoir-être');
     expect(normalizeText(subtitle?.textContent)).toContain(
-      'Les technologies réellement maîtrisées',
+      'Chaque technologie listée est utilisée dans mes projets',
     );
   });
 
@@ -57,7 +57,7 @@ describe('Stack', () => {
 
     expect(filledBadges?.length).toBe(2);
     expect(normalizeText(group?.textContent)).toContain('Backend');
-    expect(normalizeText(group?.textContent)).toContain('Java 25');
+    expect(normalizeText(group?.textContent)).toContain('Java 21');
     expect(normalizeText(group?.textContent)).toContain('Spring Boot');
     expect(normalizeText(group?.textContent)).toContain('Spring Data JPA (Hibernate)');
   });

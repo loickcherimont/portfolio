@@ -4,6 +4,7 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./home/home').then((m) => m.Home),
+    title: 'Loïck Cherimont — Développeur Java / Spring Boot',
   },
   {
     path: 'realisations/:slug',
@@ -17,6 +18,7 @@ export const routes: Routes = [
     // down first paint for a page most visitors never open.
     path: 'mentions-legales',
     loadComponent: () => import('./legal-mentions/legal-mentions').then((m) => m.LegalMentions),
+    title: 'Mentions légales — Loïck Cherimont',
   },
   {
     path: '**',
