@@ -13,7 +13,7 @@ export class LegalMentions {
 
   constructor() {
     this.title.setTitle('Mentions légales — Loïck Cherimont');
-    this.updateCanonical('https://loickcherimont.github.io/pv3/mentions-legales');
+    this.updateCanonical('https://loickcherimont.github.io/portfolio/mentions-legales');
   }
 
   private updateCanonical(url: string): void {

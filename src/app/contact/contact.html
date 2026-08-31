@@ -1,45 +1,54 @@
-<section id="me-contacter" data-testid="contact"
-	class="bg-light border border-start-0 border-end-0 min-vh-100 d-flex flex-column justify-content-center">
-	<div class="container">
-		<div class="text-center">
-			<p class="section-label">// Recruteurs, tech leads</p>
-			<h2 class="section-title" data-testid="contact__title">Me contacter</h2>
-			<p class="section-sub contact__subtitle" data-testid="contact__subtitle">
-				Prêt à discuter d'une offre de développeur Java / Spring Boot junior ou d'une passerelle vers le
-				développement.
-			</p>
+<section
+  id="me-contacter"
+  data-testid="contact"
+  class="bg-light border border-start-0 border-end-0 min-vh-100 d-flex flex-column justify-content-center"
+>
+  <div class="container">
+    <div class="text-center">
+      <p class="section-label">// Recruteurs, tech leads</p>
+      <h2 class="section-title" data-testid="contact__title">Me contacter</h2>
+      <p class="section-sub contact__subtitle" data-testid="contact__subtitle">
+        Prêt à discuter d'une offre de développeur Java / Spring Boot junior ou d'une passerelle
+        vers le développement.
+      </p>
 
-			<a href="/contact/loick-cherimont-cv-developpeur-java.pdf" class="btn btn-primary mb-4"
-				download="loick-cherimont-cv-developpeur-java.pdf" data-testid="contact__cv-download"
-				aria-label="Télécharger mon CV, format PDF">
-				<i class="bi bi-file-earmark-arrow-down me-2"></i>Télécharger mon CV
-			</a>
+      <a
+        href="/contact/loick-cherimont-cv-developpeur-java.pdf"
+        class="btn btn-primary mb-4"
+        download="loick-cherimont-cv-developpeur-java.pdf"
+        data-testid="contact__cv-download"
+        aria-label="Télécharger mon CV, format PDF"
+      >
+        <i class="bi bi-file-earmark-arrow-down me-2" aria-hidden="true"></i>Télécharger mon CV
+      </a>
 
-			<div class="row g-3 justify-content-center contact__cards" data-testid="contact__cards">
-				@for (card of cards; track card.label) {
-					<div class="col-md-4">
-						<a
-							[href]="card.href"
-							[attr.target]="card.external ? '_blank' : null"
-							[attr.rel]="card.external ? 'noopener noreferrer' : null"
-							class="card h-100 text-decoration-none d-block"
-							[attr.data-testid]="card.testId"
-						>
-							<div class="card-body text-center py-4">
-								<i [class]="card.icon + ' text-primary fs-3'" aria-hidden="true"></i>
-								<div class="fw-bold mt-2 text-body">{{ card.label }}</div>
-								<div class="text-muted small">{{ card.detail }}</div>
-							</div>
-						</a>
-					</div>
-				}
-			</div>
+      <div class="row g-3 justify-content-center contact__cards" data-testid="contact__cards">
+        @for (card of cards; track card.label) {
+          <div class="col-md-4">
+            <a
+              [href]="card.href"
+              [attr.target]="card.external ? '_blank' : null"
+              [attr.rel]="card.external ? 'noopener noreferrer' : null"
+              class="card h-100 text-decoration-none d-block"
+              [attr.data-testid]="card.testId"
+            >
+              <div class="card-body text-center py-4">
+                <i [class]="card.icon + ' text-primary fs-3'" aria-hidden="true"></i>
+                <div class="fw-bold mt-2 text-body">{{ card.label }}</div>
+                <div class="text-muted small">{{ card.detail }}</div>
+              </div>
+            </a>
+          </div>
+        }
+      </div>
 
-			<div class="d-inline-flex align-items-center gap-2 mt-4 rounded-pill text-primary fw-semibold contact__badge"
-				data-testid="contact__availability">
-				<span class="d-inline-block rounded-circle bg-primary contact__dot"></span>
-				Disponible — 44000 Nantes, France — ouvert au remote
-			</div>
-		</div>
-	</div>
+      <div
+        class="d-inline-flex align-items-center gap-2 mt-4 rounded-pill text-primary fw-semibold contact__badge"
+        data-testid="contact__availability"
+      >
+        <span class="d-inline-block rounded-circle bg-primary contact__dot"></span>
+        Disponible — 44000 Nantes, France — ouvert au remote
+      </div>
+    </div>
+  </div>
 </section>

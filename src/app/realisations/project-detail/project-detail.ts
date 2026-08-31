@@ -5,7 +5,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ProjectsService } from '../projects.service';
 import { NgOptimizedImage } from '@angular/common';
 
-const BASE_URL = 'https://loickcherimont.github.io/pv3';
+const BASE_URL = 'https://loickcherimont.github.io/portfolio';
 
 @Component({
   selector: 'app-project-detail',

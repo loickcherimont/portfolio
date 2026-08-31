@@ -106,12 +106,6 @@ section {
   margin-bottom: 0.7rem;
 }
 
-.project-desc {
-  font-size: 0.9rem;
-  color: var(--ink-soft);
-  flex: 1;
-}
-
 .project-tag {
   background: #e3eef6;
   color: var(--primary);
@@ -121,34 +115,9 @@ section {
   font-weight: 600;
 }
 
-.screenshot {
-  border-radius: 10px;
-  aspect-ratio: 16/9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-}
-
 /* Skills */
 .skill-group h4 {
   font-size: 0.95rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
 }
-
-/* Animations - To reactivate later with Angular and TypeScript */
-// .fade-in {
-// 	opacity: 0;
-// 	transform: translateY(20px);
-// 	transition: opacity .5s ease, transform .5s ease;
-// }
-
-// .fade-in.visible {
-// 	opacity: 1;
-// 	transform: none;
-// }
