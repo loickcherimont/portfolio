@@ -6,7 +6,6 @@ import { ProjectsService } from './projects.service';
   selector: 'app-realisations',
   imports: [ProjectCard],
   templateUrl: './realisations.html',
-  styleUrl: './realisations.scss',
 })
 export class Realisations {
   private readonly projectsService = inject(ProjectsService);

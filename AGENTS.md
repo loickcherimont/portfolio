@@ -97,7 +97,7 @@ No CI workflows exist.
 
 - Runner is **Vitest 4** via the `@angular/build:unit-test` builder (angular.json) — no Karma/Jasmine. `vitest/globals` types come from `tsconfig.spec.json`. Specs live next to components as `*.spec.ts`.
 - Do **not** pass `--browsers=...` to `ng test` — the Vitest builder does not support it (it runs headless with jsdom).
-- The legacy `app.spec.ts` "should render title" test is **commented out**: it asserted on the scaffold `Hello, pv3` title, which no longer exists. Re-enable/extend it when the app has real content.
+- The legacy `app.spec.ts` "should render title" test is **commented out**: it asserted on the scaffold `Hello, portfolio` title, which no longer exists. Re-enable/extend it when the app has real content.
 
 ### Testing components
 
@@ -159,6 +159,7 @@ await TestBed.configureTestingModule({
 ```
 
 Rules:
+
 - `TestBed.createComponent()` does not run change detection synchronously;
   `await fixture.whenStable()` waits for the initial change detection run
   (Angular 22 docs). Re-await `whenStable()` after mutating component state to

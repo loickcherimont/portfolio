@@ -1,23 +1,41 @@
-<article class='card h-100 project-card p-3 border-0' [class.project-card--placeholder]='project().isPlaceholder'
-  [attr.data-testid]='`project-card__${project().slug}`'>
+<article
+  class="card h-100 project-card p-3 border-0"
+  [class.project-card--placeholder]="project().isPlaceholder"
+  [attr.data-testid]="`project-card__${project().slug}`"
+>
   <!-- Preview -->
-  <div class='d-flex justify-content-center'>
-    <img [ngSrc]='project().imageUrl' [alt]='project().imageAlt' width='300' height='200' class='rounded project-card__image'>
+  <div class="d-flex justify-content-center">
+    <img
+      [ngSrc]="project().imageUrl"
+      [alt]="project().imageAlt"
+      width="300"
+      height="200"
+      class="rounded project-card__image"
+    />
   </div>
-  <div class='card-body d-flex flex-column'>
-    <h3 class='project-title text-center' [attr.data-testid]='`project-card__title-${project().slug}`'>
+  <div class="card-body d-flex flex-column">
+    <h3
+      class="project-title text-center"
+      [attr.data-testid]="`project-card__title-${project().slug}`"
+    >
       {{ project().title }}
     </h3>
-    <div class='mt-auto pt-3'>
+    <div class="mt-auto pt-3">
       @if (project().isPlaceholder) {
-        <span class='btn btn-secondary w-100 disabled' [attr.data-testid]='`project-card__cta-${project().slug}`'
-          aria-disabled='true'>
+        <span
+          class="btn btn-secondary w-100 disabled"
+          [attr.data-testid]="`project-card__cta-${project().slug}`"
+          aria-disabled="true"
+        >
           Bientôt disponible
         </span>
       } @else {
-        <a class='btn btn-primary w-100' [attr.data-testid]='`project-card__cta-${project().slug}`'
-          [routerLink]="['/realisations', project().slug]">
-          <i class="bi bi-eye me-1"></i>
+        <a
+          class="btn btn-primary w-100"
+          [attr.data-testid]="`project-card__cta-${project().slug}`"
+          [routerLink]="['/realisations', project().slug]"
+        >
+          <i class="bi bi-eye me-1" aria-hidden="true"></i>
           Découvrir le projet
         </a>
       }

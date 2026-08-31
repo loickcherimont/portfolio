@@ -1,59 +1,51 @@
-# Pv3
+# 🌐 Portfolio — Loïck CHERIMONT
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.2.
+## 🌱 About
 
-## Development server
+**Personal developer portfolio**, designed to present my **skills**, **projects**, and **professional journey** in a modern, accessible, and search-engine-friendly way. Built with server-side rendering (SSR) and prerendered static pages for fast loading and good SEO.
 
-To start a local development server, run:
+## 🖥️ Stack
 
-```bash
-ng serve
-```
+- **Front** : Angular 22, Bootstrap 5.3.8, Sass (BEM), Bootstrap Icons
+- **Tooling** : TypeScript strict, Server-Side Rendering (SSR), Vitest, Prettier
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🚀 Installation & running
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. **Clone the repository**
 
 ```bash
-ng generate component component-name
+   git clone https://github.com/loickcherimont/portfolio.git
+   cd portfolio
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+2. **Install dependencies**
 
-```bash
-ng generate --help
+```bash 
+   npm install
 ```
 
-## Building
+3. **Run the project**
 
-To build the project run:
-
-```bash
-ng build
+```bash 
+   npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+4. The app will be available at: http://localhost:4200
 
-## Running unit tests
+## 🎯 Usage
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+- Discover my **projects**
+- Learn about my **technical stack** and skills
+- Consult my **professional background** and experiences
+- **Contact me** via integrated links and downloadable CV
 
-```bash
-ng test
-```
+You can visit the **live version** here: [Personal portfolio](https://loickcherimont.github.io/portfolio/)
 
-## Running end-to-end tests
+## 🔑 License
 
-For end-to-end (e2e) testing, run:
 
-```bash
-ng e2e
-```
+This project is a personal portfolio made by Loick CHERIMONT and is **not intended for commercial reuse**.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+<div align="center">Copyright &copy; 2026 | Loick CHERIMONT | All Rights Reserved.</div>
