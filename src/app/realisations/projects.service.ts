@@ -2,9 +2,9 @@ import { Service, computed, signal } from '@angular/core';
 import { Project } from './project';
 
 const ticketingImages = {
-  hub: '/realisations/ticketing-api-hub.png',
-  login: '/realisations/ticketing-web-app-login.png',
-  main: '/realisations/ticketing-web-app-main.png',
+  hub: 'realisations/ticketing-api-hub.png',
+  login: 'realisations/ticketing-web-app-login.png',
+  main: 'realisations/ticketing-web-app-main.png',
 };
 
 export const PROJECTS: Project[] = [
