@@ -2,7 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Hero } from './hero';
 
-const normalizeText = (value: string | null | undefined): string => value?.replace(/\s+/g, ' ').trim() ?? '';
+const normalizeText = (value: string | null | undefined): string =>
+  value?.replace(/\s+/g, ' ').trim() ?? '';
 
 describe('Hero', () => {
   let component: Hero;
@@ -34,10 +35,25 @@ describe('Hero', () => {
     const paragraph = fixture.nativeElement.querySelector('[data-testid="hero__paragraph"]');
     const paragraphText = normalizeText(paragraph?.textContent);
 
-    expect(paragraphText).toContain('API REST Java / Spring Boot');
-    expect(paragraphText).toContain('outils d\'IA');
-    expect(paragraphText).toContain('parcours atypique');
-    expect(paragraphText).toContain('Découvrez ce que ça donne concrètement');
+    expect(paragraphText).toContain('Je conçois et livre des API REST Java / Spring Boot');
+    expect(paragraphText).toContain('gestion des incidents IT');
+    expect(paragraphText).toContain('68 tests automatisés');
+    expect(paragraphText).toContain('couverture de code de 90 % sur le code métier');
+    expect(paragraphText).not.toContain("outils d'IA");
+    expect(paragraphText).not.toContain('parcours atypique');
+  });
+
+  it('should display a concise green availability badge above the title', () => {
+    const availability = fixture.nativeElement.querySelector('[data-testid="hero__availability"]');
+    const title = fixture.nativeElement.querySelector('[data-testid="hero__title"]');
+    const dot = availability?.querySelector('.hero__availability-dot');
+
+    expect(normalizeText(availability?.textContent)).toBe('Nantes · disponible immédiatement');
+    expect(availability?.classList.contains('border-success')).toBe(true);
+    expect(dot?.classList.contains('bg-success')).toBe(true);
+    expect(
+      availability?.compareDocumentPosition(title) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
   });
 
   it('should display the portfolio photo', () => {
@@ -45,7 +61,9 @@ describe('Hero', () => {
 
     expect(portrait).toBeTruthy();
     expect(portrait?.getAttribute('src')).toContain('loick-cherimont-portrait.jpg');
-    expect(portrait?.getAttribute('alt')).toBe('Loïck Cherimont, développeur Backend Java Spring Boot à Nantes');
+    expect(portrait?.getAttribute('alt')).toBe(
+      'Loïck Cherimont, développeur Backend Java Spring Boot à Nantes',
+    );
   });
 
   it('should display the three stats with their values and labels', () => {
@@ -54,9 +72,9 @@ describe('Hero', () => {
     expect(statValues.length).toBe(3);
 
     const expectedStats = [
-      { id: 1, value: '3', label: 'Expériences IT' },
-      { id: 2, value: '7', label: 'Ans d\'apprentissage autodidacte' },
-      { id: 3, value: '1', label: 'Projet construit et déployé' },
+      { id: 1, value: '5', label: "ans d'autoformation" },
+      { id: 2, value: '4', label: "ans d'expérience IT" },
+      { id: 3, value: '68', label: 'tests automatisés (112 cas)' },
     ];
 
     for (const stat of expectedStats) {
@@ -68,17 +86,19 @@ describe('Hero', () => {
     }
   });
 
-  it('should link "Voir mon projet" to the projects/portfolio section', () => {
+  it('should link "Découvrir le projet" to the projects section', () => {
     const cta = fixture.nativeElement.querySelector('[data-testid="hero__cta-projects"]');
 
     expect(cta?.getAttribute('href')).toBe('#realisations');
-    expect(normalizeText(cta?.textContent)).toBe('Voir mon projet');
+    expect(normalizeText(cta?.textContent)).toBe('Découvrir le projet');
   });
 
-  it('should link "Me contacter" to the contact section', () => {
-    const cta = fixture.nativeElement.querySelector('[data-testid="hero__cta-contact"]');
+  it('should link to the downloadable CV', () => {
+    const cta = fixture.nativeElement.querySelector('[data-testid="hero__cta-cv"]');
 
-    expect(cta?.getAttribute('href')).toBe('#me-contacter');
-    expect(normalizeText(cta?.textContent)).toBe('Me contacter');
+    expect(cta?.getAttribute('href')).toBe('contact/loick-cherimont-cv-developpeur-java.pdf');
+    expect(cta?.getAttribute('download')).toBe('loick-cherimont-cv-developpeur-java.pdf');
+    expect(cta?.getAttribute('aria-label')).toBe('Télécharger mon CV, format PDF');
+    expect(normalizeText(cta?.textContent)).toBe('Télécharger mon CV');
   });
 });

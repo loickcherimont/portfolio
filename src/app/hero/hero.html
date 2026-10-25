@@ -1,37 +1,61 @@
-<header id='accueil' class='hero bg-white text-secondary'>
-	<div class='container'>
-		<div class='row align-items-center g-5 flex-column-reverse flex-lg-row'>
-			<div class='col-lg-8 d-flex flex-column align-items-center align-items-lg-start'>
-			<h1 class="fw-bold fs-1 text-center text-lg-start" data-testid="hero__title">Développeur<br><span
-					class='text-primary'> Back-End
-					Java / Spring
-					Boot</span></h1>
-			<p class='hero__paragraph mt-3 px-3' data-testid="hero__paragraph">
-				Je conçois des <strong class='text-primary'>API REST Java / Spring Boot</strong> robustes
-				— Spring Security, Spring Data JPA, tests JUnit 5 / Mockito — en tirant le meilleur parti des
-				<strong class='text-primary'>outils d'IA</strong> pour accélérer sans jamais déléguer la compréhension technique.
-				Mon parcours atypique m'a appris l'autonomie. Découvrez ce que ça donne concrètement.
-			</p>
-				<div class='d-flex flex-column flex-lg-row gap-3 mt-4'>
-					<a class='btn btn-primary' href='#realisations' data-testid="hero__cta-projects">Voir
-						mon
-						projet</a>
-					<a class='btn btn-outline-secondary' href='#me-contacter' data-testid="hero__cta-contact">Me
-						contacter</a>
-				</div>
-			</div>
-			<div class='col-lg-4 text-center'>
-				<div class='portrait'>
-				<img ngSrc='hero/loick-cherimont-portrait.jpg' alt='Loïck Cherimont, développeur Backend Java Spring Boot à Nantes'
-					class='portrait__img' priority fill data-testid="hero__portrait" />
-				</div>
-			</div>
-		</div>
-		<!-- Stats -->
-		<div class='row g-4 text-center mt-4'>
-			@for (stat of stats(); track stat.id) {
-				<app-stat [statInfo]="stat" />
-			}
-		</div>
-	</div>
+<header id="accueil" class="hero bg-white text-secondary">
+  <div class="container">
+    <div class="row align-items-center g-5 flex-column-reverse flex-lg-row">
+      <div class="col-lg-8 d-flex flex-column align-items-center align-items-lg-start">
+        <div
+          class="d-inline-flex align-items-center gap-2 mb-3 rounded-pill border border-success text-success-emphasis fw-semibold hero__availability"
+          data-testid="hero__availability"
+        >
+          <span
+            class="d-inline-block rounded-circle bg-success hero__availability-dot"
+            aria-hidden="true"
+          ></span>
+          Nantes · disponible immédiatement
+        </div>
+        <h1 class="fw-bold fs-1 text-center text-lg-start" data-testid="hero__title">
+          Développeur<br /><span class="text-primary"> Back-End Java / Spring Boot</span>
+        </h1>
+        <p class="hero__paragraph mt-3 px-3" data-testid="hero__paragraph">
+          Je conçois et livre des <strong class="text-primary">API REST Java / Spring Boot</strong>
+          sécurisées, testées et déployées. Dernier projet : une application de
+          <strong class="text-primary">gestion des incidents IT</strong>, avec
+          <strong class="text-primary">68 tests automatisés</strong>, une intégration continue (CI)
+          et une
+          <strong class="text-primary">couverture de code de 90 % sur le code métier</strong>.
+        </p>
+        <div class="d-flex flex-column flex-lg-row gap-3 mt-4">
+          <a class="btn btn-primary" href="#realisations" data-testid="hero__cta-projects"
+            >Découvrir le projet</a
+          >
+          <a
+            class="btn btn-outline-secondary"
+            href="contact/loick-cherimont-cv-developpeur-java.pdf"
+            download="loick-cherimont-cv-developpeur-java.pdf"
+            aria-label="Télécharger mon CV, format PDF"
+            data-testid="hero__cta-cv"
+          >
+            Télécharger mon CV
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-4 text-center">
+        <div class="portrait">
+          <img
+            ngSrc="hero/loick-cherimont-portrait.jpg"
+            alt="Loïck Cherimont, développeur Backend Java Spring Boot à Nantes"
+            class="portrait__img"
+            priority
+            fill
+            data-testid="hero__portrait"
+          />
+        </div>
+      </div>
+    </div>
+    <!-- Stats -->
+    <div class="row g-4 text-center mt-4">
+      @for (stat of stats(); track stat.id) {
+        <app-stat [statInfo]="stat" />
+      }
+    </div>
+  </div>
 </header>

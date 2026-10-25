@@ -11,8 +11,8 @@ import { StatInfo } from './stat/stat-info';
 })
 export class Hero {
   protected stats = signal<Array<StatInfo>>([
-    { id: 1, value: '3', label: 'Expériences IT' },
-    { id: 2, value: '7', label: 'Ans d\'apprentissage autodidacte' },
-    { id: 3, value: '1', label: 'Projet construit et déployé' },
+    { id: 1, value: '5', label: "ans d'autoformation" },
+    { id: 2, value: '4', label: "ans d'expérience IT" },
+    { id: 3, value: '68', label: 'tests automatisés (112 cas)' },
   ]);
 }
